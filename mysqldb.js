@@ -79,6 +79,7 @@ app.post("/test", (req, res) => {
     res.json({ message: "success" });
 });
 
+//insert til person.
 app.post("/person", (req, res) => {
     console.log("Fikk POST-request fra klienten");
     console.log("Navn: " + req.body.navn);
@@ -106,5 +107,6 @@ app.post("/person", (req, res) => {
         }
     });
 });
+
 
 var server = app.listen(8000);
