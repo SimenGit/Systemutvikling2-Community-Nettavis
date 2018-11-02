@@ -5,8 +5,6 @@ const bodyParser = require('body-parser');
 //middleware
 const morgan = require('morgan');
 
-const productRoutes = require('./api/routes/products');
-const orderRoutes = require('./api/routes/orders');
 const personRoutes = require('./api/routes/person');
 const articleRoutes = require('./api/routes/article');
 
@@ -34,8 +32,6 @@ app.use((req, res, next) => {
 });
 
 //routes that handle requests
-app.use('/products', productRoutes);
-app.use('/orders', orderRoutes);
 app.use('/person', personRoutes);
 app.use('/article', articleRoutes);
 

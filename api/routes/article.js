@@ -94,7 +94,7 @@ router.post("/", (req, res) => {
     });
 });
 
-
+//sletter artikler basert på overskrift.
 router.delete("/:overskriften", (req, res) => {
     console.log("Fikk DELETE-request fra klienten");
     pool.getConnection((err, connection) => {
@@ -120,11 +120,5 @@ router.delete("/:overskriften", (req, res) => {
         }
     });
 });
-
-
-
-
-
-
 
 module.exports = router;
