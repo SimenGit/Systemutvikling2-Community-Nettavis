@@ -1,8 +1,6 @@
-var express = require("express");
+const express = require('express');
+const router = express.Router();
 var mysql = require("mysql");
-var bodyParser = require("body-parser");
-var app = express();
-app.use(bodyParser.json());
 
 var pool = mysql.createPool({
     connectionLimit: 2,
@@ -13,15 +11,8 @@ var pool = mysql.createPool({
     debug: false
 });
 
-app.get("/hello", (req, res) => {
-    res.send("Hello World");
-});
 
-app.get("/hello2", (req, res) => {
-    res.json({ message: "Hello world" });
-});
-
-app.get("/person", (req, res) => {
+router.get('/', (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -46,7 +37,7 @@ app.get("/person", (req, res) => {
     });
 });
 
-app.get("/person/:personId", (req, res) => {
+router.get("/:personId", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -72,15 +63,9 @@ app.get("/person/:personId", (req, res) => {
     });
 });
 
-app.post("/test", (req, res) => {
-    console.log("Fikk POST-request fra klienten");
-    console.log("Navn: " + req.body.navn);
-    res.status(200);
-    res.json({ message: "success" });
-});
 
 //insert til person.
-app.post("/person", (req, res) => {
+router.post("/", (req, res) => {
     console.log("Fikk POST-request fra klienten");
     console.log("Navn: " + req.body.navn);
     pool.getConnection((err, connection) => {
@@ -89,11 +74,18 @@ app.post("/person", (req, res) => {
             res.json({ error: "feil ved oppkobling" });
         } else {
             console.log("Fikk databasekobling");
-            var val = [req.body.id, req.body.navn, req.body.alder, req.body.epost];
+            //var val = [req.body.id, req.body.navn, req.body.alder, req.body.epost];
+            const person = {
+                navn: req.body.navn,
+                alder: req.body.alder,
+                epost: req.body.epost
+            };
             connection.query(
-                "insert into person (id,navn,alder,epost) values (?,?,?,?)",
-                val,
+                "insert into person (navn,alder,epost) values ('" + person.navn + "', " + person.alder + ", '" + person.epost + "')",
+                //person,
+
                 err => {
+
                     if (err) {
                         console.log(err);
                         res.status(500);
@@ -108,5 +100,4 @@ app.post("/person", (req, res) => {
     });
 });
 
-
-var server = app.listen(8000);
+module.exports = router;
