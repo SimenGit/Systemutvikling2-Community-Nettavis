@@ -11,7 +11,6 @@ var pool = mysql.createPool({
     debug: false
 });
 
-
 router.get('/', (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -21,7 +20,7 @@ router.get('/', (req, res, next) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, navn, alder, epost from person",
+                "select id, name, age, email from users",
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -46,7 +45,7 @@ router.get("/:personId", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, navn, alder, epost from person where id=?",
+                "select id, name, age, email from users where id=?",
                 [req.params.personId],
                 (err, rows) => {
                     connection.release();
@@ -74,18 +73,15 @@ router.post("/", (req, res) => {
             res.json({ error: "feil ved oppkobling" });
         } else {
             console.log("Fikk databasekobling");
-            //var val = [req.body.id, req.body.navn, req.body.alder, req.body.epost];
-            const person = {
-                navn: req.body.navn,
-                alder: req.body.alder,
-                epost: req.body.epost
+            const users = {
+                name: req.body.name,
+                age: req.body.age,
+                email: req.body.email
             };
             connection.query(
-                "insert into person (navn,alder,epost) values ('" + person.navn + "', " + person.alder + ", '" + person.epost + "')",
+                "insert into users (name,age,email) values (" + "'" + users.name + "', " + users.age + ", '" + users.email + "')",
                 //person,
-
                 err => {
-
                     if (err) {
                         console.log(err);
                         res.status(500);

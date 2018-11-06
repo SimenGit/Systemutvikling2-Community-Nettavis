@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 //middleware
 const morgan = require('morgan');
 
-const personRoutes = require('./api/routes/person');
 const articleRoutes = require('./api/routes/article');
+const userRoutes = require('./api/routes/users');
 
 
 //bruker morgan før den handler requests
@@ -32,8 +32,8 @@ app.use((req, res, next) => {
 });
 
 //routes that handle requests
-app.use('/person', personRoutes);
 app.use('/article', articleRoutes);
+app.use('/users', userRoutes);
 
 //custom 404 error handler
 app.use((req, res, next) => {

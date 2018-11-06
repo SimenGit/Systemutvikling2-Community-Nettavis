@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, overskrift, tekst, viktighet from article",
+                "select id, header, description, content, date_made, img, importance from article",
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 });
 
 // get metode for å få artikkel med overskrift som nøkkel
-router.get("/:articleOverskrift", (req, res) => {
+router.get("/:header", (req, res) => {
     console.log("Fikk GET-request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -46,7 +46,7 @@ router.get("/:articleOverskrift", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, overskrift, tekst, viktighet from article where overskrift=?",
+                "select id, header, description, content, date_made, img, importance from article where header=?",
                 [req.params.articleOverskrift],
                 (err, rows) => {
                     connection.release();
@@ -73,12 +73,17 @@ router.post("/", (req, res) => {
         } else {
             console.log("Fikk databasekobling");
             const article = {
-                overskrift: req.body.overskrift,
-                tekst: req.body.tekst,
-                viktighet: req.body.viktighet
+                header: req.body.header,
+                description: req.body.description,
+                content: req.body.content,
+                date_made: req.body.date_made,
+                img: req.body.img,
+                importance: req.body.importance,
+                catagory_fk: req.body.catagory_fk,
+                user_fk: req.body.user_fk
             };
             connection.query(
-                "insert into article (overskrift,tekst,viktighet) values ('" + article.overskrift + "', '" + article.tekst + "', " + article.viktighet + ")",
+                "insert into article (header, description, content, date_made, img, importance, catagory_fk, user_fk) values (" + "'" + article.header + "', '" + article.description + "', '" + article.content + "', '" + article.date_made + "', '" + article.img + "', " + article.importance + ", '" + article.catagory_fk + "', " + article.user_fk + ")",
                 err => {
                     if (err) {
                         console.log(err);
@@ -95,7 +100,7 @@ router.post("/", (req, res) => {
 });
 
 //sletter artikler basert på overskrift.
-router.delete("/:overskriften", (req, res) => {
+router.delete("/:header", (req, res) => {
     console.log("Fikk DELETE-request fra klienten");
     pool.getConnection((err, connection) => {
         if (err) {
@@ -104,7 +109,7 @@ router.delete("/:overskriften", (req, res) => {
         } else {
             console.log("Fikk databasekobling");
             connection.query(
-                "delete from article  where overskrift = ?",
+                "delete from article  where header = ?",
                 [req.params.overskriften],
                 err => {
                     if (err) {
