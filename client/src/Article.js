@@ -5,9 +5,8 @@ class Article extends Component {
 
     render() {
         return (
-
             <div className = "card">
-                <img class="card-img-top" src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png"/>
+                <img className="card-img-top" src="/images/last ned.png"/>
                     <div className="card-body">
                     <h5 className="card-title">{this.props.article.header}</h5>
                     <p className="card-text"> {this.props.article.description}</p>
@@ -16,7 +15,6 @@ class Article extends Component {
             </div>
         )
     }
-
 
 }
 
