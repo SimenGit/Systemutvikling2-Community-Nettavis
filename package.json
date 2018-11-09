@@ -6,7 +6,11 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/core": "^3.4.0",
+    "react-bootstrap": "^0.32.4",
+    "react-router-dom": "^4.3.1"
+  },
   "devDependencies": {
     "concurrently": "^4.0.1"
   }

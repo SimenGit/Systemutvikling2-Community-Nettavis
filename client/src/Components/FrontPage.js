@@ -3,7 +3,7 @@
 import {Component} from "react-simplified";
 import Article from "./Article";
 import React from "react";
-import {serverLink} from "./store";
+import {serverLink} from "../store";
 
 
 

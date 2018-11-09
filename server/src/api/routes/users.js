@@ -11,6 +11,7 @@ var pool = mysql.createPool({
     debug: false
 });
 
+/*
 router.get('/', (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -20,7 +21,7 @@ router.get('/', (req, res, next) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, name, age, email from users",
+                "select id, name, age, email, password from users",
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -36,6 +37,10 @@ router.get('/', (req, res, next) => {
     });
 });
 
+*/
+
+/*
+
 router.get("/:personId", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -45,8 +50,37 @@ router.get("/:personId", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, name, age, email from users where id=?",
+                "select id, name, age, email, password from users where id=?",
                 [req.params.personId],
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({ error: "error querying" });
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
+});
+
+*/
+
+//henter user ved email
+router.get("/:email", (req, res) => {
+    console.log("Fikk email request fra klienten");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "select id, name, age, email, password from users where email=?",
+                [req.params.email],
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -76,10 +110,11 @@ router.post("/", (req, res) => {
             const users = {
                 name: req.body.name,
                 age: req.body.age,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password
             };
             connection.query(
-                "insert into users (name,age,email) values (" + "'" + users.name + "', " + users.age + ", '" + users.email + "')",
+                "insert into users (name,age,email,password) values (" + "'" + users.name + "', " + users.age + ", '" + users.email + "'" + users.password + "')",
                 //person,
                 err => {
                     if (err) {

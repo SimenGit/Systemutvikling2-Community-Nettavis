@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react-simplified';
-import {serverLink} from "./store";
+import {serverLink} from "../store";
 
 
 class SearchField extends Component {

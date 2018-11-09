@@ -2,7 +2,7 @@
 <dataSource name="simenten@mysql.stud.iie.ntnu.no">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.11">
     <root id="1">
-      <ServerVersion>5.7.23</ServerVersion>
+      <ServerVersion>5.7.24</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>exact</DefaultCasing>
@@ -905,119 +905,192 @@
     </collation>
     <table id="226" parent="3" name="article"/>
     <table id="227" parent="3" name="catagory"/>
-    <table id="228" parent="3" name="users"/>
-    <column id="229" parent="226" name="id">
+    <table id="228" parent="3" name="comments"/>
+    <table id="229" parent="3" name="rating"/>
+    <table id="230" parent="3" name="users"/>
+    <column id="231" parent="226" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="230" parent="226" name="header">
+    <column id="232" parent="226" name="header">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="226" name="description">
+    <column id="233" parent="226" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="226" name="content">
+    <column id="234" parent="226" name="content">
       <Position>4</Position>
       <DataType>varchar(2000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="226" name="date_made">
+    <column id="235" parent="226" name="date_made">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="226" name="img">
+    <column id="236" parent="226" name="img">
       <Position>6</Position>
       <DataType>varchar(300)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="226" name="importance">
+    <column id="237" parent="226" name="importance">
       <Position>7</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="226" name="catagory_fk">
+    <column id="238" parent="226" name="catagory_fk">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="226" name="user_fk">
+    <column id="239" parent="226" name="user_fk">
       <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="238" parent="226" name="catagory_fk">
+    <index id="240" parent="226" name="catagory_fk">
       <ColNames>catagory_fk</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="239" parent="226" name="user_fk">
+    <index id="241" parent="226" name="user_fk">
       <ColNames>user_fk</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="240" parent="226" name="PRIMARY">
+    <key id="242" parent="226" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="241" parent="226" name="article_ibfk_1">
+    <foreign-key id="243" parent="226" name="article_ibfk_1">
       <ColNames>catagory_fk</ColNames>
       <RefSchemaName>simenten</RefSchemaName>
       <RefTableName>catagory</RefTableName>
       <RefColNames>catagory</RefColNames>
     </foreign-key>
-    <foreign-key id="242" parent="226" name="article_ibfk_2">
+    <foreign-key id="244" parent="226" name="article_ibfk_2">
       <ColNames>user_fk</ColNames>
       <RefSchemaName>simenten</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="243" parent="227" name="catagory">
+    <column id="245" parent="227" name="catagory">
       <Position>1</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="244" parent="227" name="PRIMARY">
+    <key id="246" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>catagory</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="245" parent="228" name="id">
+    <column id="247" parent="228" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="228" name="name">
+    <column id="248" parent="228" name="content">
+      <Position>2</Position>
+      <DataType>varchar(300)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="249" parent="228" name="user_fk">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="228" name="article_fk">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="251" parent="228" name="user_fk">
+      <ColNames>user_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="252" parent="228" name="article_fk">
+      <ColNames>article_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="253" parent="228" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="254" parent="228" name="comments_ibfk_1">
+      <ColNames>user_fk</ColNames>
+      <RefSchemaName>simenten</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="255" parent="228" name="comments_ibfk_2">
+      <ColNames>article_fk</ColNames>
+      <RefSchemaName>simenten</RefSchemaName>
+      <RefTableName>article</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="256" parent="229" name="rating">
+      <Position>1</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="229" name="article_id_fk">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="258" parent="229" name="article_id_fk">
+      <ColNames>article_id_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="259" parent="229" name="rating_ibfk_1">
+      <ColNames>article_id_fk</ColNames>
+      <RefSchemaName>simenten</RefSchemaName>
+      <RefTableName>article</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="260" parent="230" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="230" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="228" name="age">
+    <column id="262" parent="230" name="age">
       <Position>3</Position>
       <DataType>int(3)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="228" name="email">
+    <column id="263" parent="230" name="email">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="249" parent="228" name="PRIMARY">
+    <key id="264" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

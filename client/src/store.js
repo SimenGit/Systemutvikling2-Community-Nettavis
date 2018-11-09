@@ -12,6 +12,14 @@ class ServerLink {
         return axios.get(`/users/${id}`);
     }
 
+    getComments(id) {
+        return axios.get(`/comments/${id}`);
+    }
+
+    getUserByEmail(email) {
+        return axios.get(`/users/${email}`);
+    }
+
 }
 
 export const serverLink = sharedComponentData(new ServerLink());

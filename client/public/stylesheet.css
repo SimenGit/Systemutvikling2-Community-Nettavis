@@ -12,9 +12,9 @@
 }
 
 .card {
-    max-width: 400px;
-    min-widt: 400px;
-    padding-top: 100px;
+    position: relative;
+    width: 800px;
+    height: 400px;
 }
 
 .btn-primary {
@@ -29,10 +29,70 @@
     text-align: center;
 }
 
+
 .nav-wrapper {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     z-index: 20;
+    background-color: #abdde5;
 }
+
+.logoTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.viewComments {
+    position: absolute;
+}
+
+.emailField {
+    max-width: 200px;
+    position: fixed;
+}
+.passwordField {
+    max-width: 20px;
+    position: fixed;
+}
+
+.article-list {
+    padding-top: 30px;
+}
+
+card-img-top {
+    height: 300px
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #f8f8ff;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
