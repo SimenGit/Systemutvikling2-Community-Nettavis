@@ -3,7 +3,7 @@
 }
 
 .search {
-    background-color: #1c7430;
+    background-color: #abdde5;
 }
 .card-img-top {
     width: 100%;
@@ -14,6 +14,7 @@
 .card {
     max-width: 400px;
     min-widt: 400px;
+    padding-top: 100px;
 }
 
 .btn-primary {
@@ -26,4 +27,12 @@
 
 .card-text {
     text-align: center;
+}
+
+.nav-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 20;
 }
