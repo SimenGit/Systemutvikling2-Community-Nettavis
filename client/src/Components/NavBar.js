@@ -8,21 +8,18 @@ class NavBar extends Component {
         username: '',
         password: '',
         passwordInput: '',
-        loggedIn: ''
+        output: '',
+        loggedInn: true
     };
 
     onClick() {
 
-        //cannot get password from undefined ?
-        console.log(this.state.username);
-        console.log(this.state.password);
-
         serverLink.getUserByEmail(this.state.username).then(data => {
 
-            this.state.password = data[0].password;
+            this.setState({password: data[0].password});
 
-            if(password === passwordInput) {
-                this.state.loggedIn = this.state.username;
+            if(this.state.password === this.state.passwordInput) {
+                this.setState({output: this.state.username});
                 console.log("logget inn!");
             }else{
                 console.log("brukernavn eller passord missmatch.");
@@ -54,7 +51,7 @@ class NavBar extends Component {
                              </button>
                         </div>
                       <div className="col-sm-4">
-                        <h7 className = "form-control">Logget inn som: {this.state.loggedIn}</h7>
+                        <h7 className = "form-control">Logget inn som: {this.state.output}</h7>
                       </div>
                   </div>
               </div>

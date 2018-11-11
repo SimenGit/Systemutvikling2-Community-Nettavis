@@ -4,31 +4,30 @@ import {serverLink} from "../store";
 
 class ViewComments extends Component {
 
-    idInput = 0;
     state = {
-        article: null,
+        password: '',
         comment: ''
     };
 
     render() {
         return(
-
             <div className="viewComments">
-                <input onChange={event => (this.idInput = event.target.value)} />
-                <button className="comment-btn" onClick={this.onClick}>
-                    {' '}
-                    Se kommentarer
-                </button>
-                Kommentar: {this.state.comment}
+                    <input type="password" className="form-control" placeholder="Password"
+                           onChange={event => (this.state.password = event.target.value)}/>
+
+                    <button className="submit" onClick={this.onClick}>
+                        {' '}
+                        submit
+                    </button>
+                    <h1>output: {this.state.comment}</h1>
             </div>
         );
     }
 
     onClick() {
-        serverLink.getComments(this.idInput).then(data => {
-            this.setState({comment: data[0].content})
-        });
+        this.setState({comment: this.state.password})
     }
+
 
 }
 

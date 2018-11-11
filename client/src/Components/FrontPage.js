@@ -4,11 +4,9 @@ import {Component} from "react-simplified";
 import Article from "./Article";
 import React from "react";
 import {serverLink} from "../store";
-
-
+import { Button } from 'reactstrap';
 
 class FrontPage extends Component {
-    idInput = 0;
 
     state = {
         articles: {},
@@ -16,7 +14,7 @@ class FrontPage extends Component {
     };
     render() {
         return (
-            <div className="search">
+            <div className="frontPageArticles">
                 {this.state.articles.length > 0 &&
                 this.state.articles.map(article => {
                     return <Article article={article} />;
@@ -26,14 +24,7 @@ class FrontPage extends Component {
     }
 
     componentDidMount() {
-        console.log('test');
-        /*
-        axios.get('/article').then(data => {
-            console.log(data);
-            //lagrer alle artikler i staten
-            this.setState({ articles: data });
-        });
-*/
+
         serverLink.getArticles().then(data => {
             this.setState({ articles: data });
         });

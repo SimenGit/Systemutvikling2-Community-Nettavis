@@ -11,7 +11,7 @@ var pool = mysql.createPool({
     debug: false
 });
 
-/*
+
 router.get('/', (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -37,10 +37,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-*/
-
 /*
-
 router.get("/:personId", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {

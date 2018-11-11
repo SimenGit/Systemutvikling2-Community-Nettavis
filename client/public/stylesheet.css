@@ -2,19 +2,21 @@
     background-color: #721c24;
 }
 
-.search {
-    background-color: #abdde5;
+.frontPageArticles {
+    background-color: #f8f8ff;
+    padding-top: 325px;
 }
 .card-img-top {
     width: 100%;
-    height: 15vw;
+    height: 30vw;
     object-fit: cover;
 }
 
 .card {
     position: relative;
     width: 800px;
-    height: 400px;
+    height: 450px;
+    padding-bottom: 500px;
 }
 
 .btn-primary {
@@ -58,7 +60,7 @@
 }
 
 .viewComments {
-    position: absolute;
+    top: 0;
 }
 
 .emailField {
@@ -72,6 +74,7 @@
 
 .article-list {
     padding-top: 30px;
+
 }
 
 card-img-top {
@@ -90,7 +93,31 @@ card-img-top {
     padding-top: 20px;
 }
 
+.password {
+    position: absolute;
+    bottom: 0;
+}
 
+.form-control {
+    text-align: left;
+    background-color: #eee9e9;
+}
+
+.btn2 {
+    padding-bottom: 10px;
+}
+.btn3 {
+    padding-bottom: 10px;
+}
+.btn4 {
+    padding-bottom: 10px;
+}
+.btn5 {
+    padding-bottom: 10px;
+}
+.btn6 {
+    padding-bottom: 10px;
+}
 
 
 

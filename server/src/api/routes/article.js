@@ -1,6 +1,18 @@
 const express = require("express");
 const router = express.Router();
 var mysql = require("mysql");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({storage: storage});
 
 var pool = mysql.createPool({
   connectionLimit: 2,
@@ -90,7 +102,8 @@ router.get("/:header", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", upload.single('articleImage'),(req, res) => {
+    console.log(req.file);
   console.log("Fikk POST-request fra klienten");
   pool.getConnection((err, connection) => {
     if (err) {
@@ -98,12 +111,15 @@ router.post("/", (req, res) => {
       res.json({ error: "feil ved oppkobling" });
     } else {
       console.log("Fikk databasekobling");
+
+      var filen = req.file.filename;
+
       const article = {
         header: req.body.header,
         description: req.body.description,
         content: req.body.content,
         date_made: req.body.date_made,
-        img: req.body.img,
+        img: "/uploads/" + filen,
         importance: req.body.importance,
         catagory_fk: req.body.catagory_fk,
         user_fk: req.body.user_fk
