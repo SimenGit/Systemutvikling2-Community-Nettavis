@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads/');
+        cb(null, '../client/public/images/');
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname);
@@ -49,34 +49,9 @@ router.get("/", (req, res, next) => {
 });
 
 // get metode for å få artikkel med overskrift som nøkkel
-router.get("/:header", (req, res) => {
-  console.log("Fikk GET-request fra klient");
-  pool.getConnection((err, connection) => {
-    console.log("Connected to database");
-    if (err) {
-      console.log("Feil ved kobling til databasen");
-      res.json({ error: "feil ved ved oppkobling" });
-    } else {
-      connection.query(
-        "select id, header, description, content, date_made, img, importance from article where header=?",
-        [req.params.articleOverskrift],
-        (err, rows) => {
-          connection.release();
-          if (err) {
-            console.log(err);
-            res.json({ error: "error querying" });
-          } else {
-            console.log(rows);
-            res.json(rows);
-          }
-        }
-      );
-    }
-  });
-});
 
 
-router.get("/:header", (req, res) => {
+router.get("/:id", (req, res) => {
     console.log("Fikk GET-request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -85,8 +60,8 @@ router.get("/:header", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, header, description, content, date_made, img, importance from article where header=?",
-                [req.params.articleOverskrift],
+                "select id, header, description, content, date_made, img, importance from article where id=?",
+                [req.params.id],
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -119,7 +94,7 @@ router.post("/", upload.single('articleImage'),(req, res) => {
         description: req.body.description,
         content: req.body.content,
         date_made: req.body.date_made,
-        img: "/uploads/" + filen,
+        img: filen,
         importance: req.body.importance,
         catagory_fk: req.body.catagory_fk,
         user_fk: req.body.user_fk

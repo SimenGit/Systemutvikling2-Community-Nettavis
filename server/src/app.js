@@ -14,7 +14,6 @@ const morgan = require("morgan");
 const articleRoutes = require("./api/routes/article");
 const userRoutes = require("./api/routes/users");
 const commentRoutes = require("./api/routes/comments");
-const uploadsRoutes = require("./api/routes/uploads");
 
 //bruker morgan før den handler requests
 app.use(morgan("dev"));
@@ -42,7 +41,6 @@ app.use((req, res, next) => {
 app.use("/article", articleRoutes);
 app.use("/users", userRoutes);
 app.use("/comments", commentRoutes);
-app.use("/uploads", uploadsRoutes);
 
 //custom 404 error handler
 app.use((req, res, next) => {
@@ -60,7 +58,5 @@ app.use((error, req, res, next) => {
     }
   });
 });
-
-
 
 module.exports = app;

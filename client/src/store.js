@@ -20,6 +20,10 @@ class ServerLink {
         return axios.get(`/users/${email}`);
     }
 
+    getArticleDetails(id) {
+        return axios.get(`/article/${id}`);
+    }
+
 }
 
 export const serverLink = sharedComponentData(new ServerLink());
