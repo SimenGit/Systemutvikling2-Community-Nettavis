@@ -1,7 +1,8 @@
 
 .frontPageArticles {
-    background-color: #f8f8ff;
-    padding-top: 275px;
+    background-color: white;
+    padding-top: 175px;
+    padding-left: 75px;
 }
 .card-img-top {
     width: 100%;
@@ -9,15 +10,16 @@
     object-fit: cover;
 }
 
+
+.articleCardBTN {
+    width: 100%;
+}
+
 .card {
     position: relative;
     width: 800px;
-    height: 450px;
-    padding-bottom: 500px;
-}
-
-.btn-primary {
-    width: 100%;
+    height: 500px;
+    padding-bottom: 50px;
 }
 
 .card-title {
@@ -67,8 +69,7 @@
 }
 
 .article-list {
-    padding-top: 30px;
-
+    padding-top: 100px;
 }
 
 

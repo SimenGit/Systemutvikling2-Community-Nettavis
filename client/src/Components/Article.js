@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react-simplified';
 import {history} from "../index";
 import {NavLink} from "react-router-dom";
+import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 class Article extends Component {
 
@@ -13,8 +14,9 @@ class Article extends Component {
                     <div className="card-body">
                     <h5 className="card-title">{this.props.article.header}</h5>
                     <p className="card-text"> {this.props.article.description}</p>
-                        <NavLink className="btn btn-primary" to={"/articleDetails/" + this.props.article.id}>
-                            Les mer</NavLink>
+                        <Button className = "articleCardBTN" onClick = {this.onClick}>
+                            Read more
+                        </Button>
                     </div>
             </div>
             </div>
