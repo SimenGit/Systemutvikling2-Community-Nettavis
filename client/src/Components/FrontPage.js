@@ -12,13 +12,19 @@ class FrontPage extends Component {
         articles: {},
         username: ''
     };
+
     render() {
         return (
-            <div className="frontPageArticles">
-                {this.state.articles.length > 0 &&
-                this.state.articles.map(article => {
-                    return <Article article={article} />;
-                })}
+            <div className="frontPage">
+                <div className="logoTop">
+                    <img src="/logos/logoFront.png" className="img-fluid" alt="Responsive image"/>
+                </div>
+                <div className="frontPageArticles">
+                    {this.state.articles.length > 0 &&
+                    this.state.articles.map(article => {
+                        return <Article article={article}/>;
+                    })}
+                </div>
             </div>
         );
     }

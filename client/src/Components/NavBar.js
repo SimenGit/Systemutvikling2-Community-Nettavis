@@ -1,6 +1,9 @@
 import React from 'react';
 import { Component } from 'react-simplified';
 import {serverLink} from "../store";
+import {history} from "../index";
+import {user} from "../store";
+
 
 class NavBar extends Component {
 
@@ -20,21 +23,30 @@ class NavBar extends Component {
 
             if(this.state.password === this.state.passwordInput) {
                 this.setState({output: this.state.username});
+                localStorage.setItem("userEmail", this.state.username);
                 console.log("logget inn!");
             }else{
                 console.log("brukernavn eller passord missmatch.");
+                alert("username or password missmatch.");
             }
         });
     }
 
+    onClickRegister() {
+        history.push("/registerUser/");
+    }
+
   render() {
+      localStorage.removeItem("userEmail");
     return (
       <div className="nav-wrapper">
-          <nav className=" navbar fixed-top navbar-light bg-light">
+          <nav className="navbar fixed-top navbar-light bg-light">
               <div className="container">
                   <div className="row">
                       <div className="col-sm">
-                         <h3>NavBar</h3>
+                          <button className = "form-control" onClick={this.onClickRegister}>
+                              Register
+                          </button>
                       </div>
                         <div className="col-sm">
                             <input type="email" className="form-control" aria-describedby="emailHelp"
@@ -50,9 +62,11 @@ class NavBar extends Component {
                                  Log in
                              </button>
                         </div>
+
                       <div className="col-sm-4">
-                        <h7 className = "form-control">Logget inn som: {this.state.output}</h7>
+                        <text className = "form-control">Logged in as: {this.state.output}</text>
                       </div>
+
                   </div>
               </div>
           </nav>

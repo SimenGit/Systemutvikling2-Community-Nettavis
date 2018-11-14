@@ -1,29 +1,44 @@
 import React from 'react';
 import { Component } from 'react-simplified';
+import {history} from "../index";
+import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 class RightNav extends Component {
+
+
+    onClickPost()  {
+        var userEmail = localStorage.getItem("userEmail");
+        console.log(userEmail);
+        if(userEmail !== null) {
+            history.push('/postArticle');
+        }else{
+            alert("You have to be logged in to post articles.");
+        }
+    }
+
     render() {
         return (
             <div id="mySidenav" className="sidenav">
                 <div className = "side-Buttons">
                     <div className = "btn1">
-                <button className = "form-control">Catagories</button>
+                <Button className = "button1">Categories</Button>
                     </div>
                     <div className = "btn2">
-                <button className = "form-control">Best rated</button>
+                <Button className = "button2" >Best rated</Button>
                     </div>
                     <div className = "btn3">
-                <button className = "form-control">Post article</button>
+                <Button className = "button3" onClick={this.onClickPost}>Post article</Button>
                     </div>
                     <div className = "btn4">
-                <button className = "form-control">Delete article</button>
+                <Button className = "button4" >Delete article</Button>
                     </div>
                     <div className = "btn5">
-                    <button className = "form-control">User profile</button>
+                    <Button className = "button5" >User profile</Button>
                     </div>
                     <div className = "btn6">
-                <input className = "form-control" type="text" placeholder="Search.."></input>
-                    <button className = "form-control">Search for articles</button>
+                        <Button className = "button6" >Search for articles</Button>
+                    <Input className = "form-control" type="text" placeholder="type here..."/>
+
                     </div>
                 </div>
             </div>
@@ -32,17 +47,3 @@ class RightNav extends Component {
 }
 
 export default RightNav;
-
-/*  dropdown:                <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-
-                    */

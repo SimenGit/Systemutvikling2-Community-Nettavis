@@ -97,7 +97,7 @@ router.get("/:email", (req, res) => {
 //insert til person.
 router.post("/", (req, res) => {
     console.log("Fikk POST-request fra klienten");
-    console.log("Navn: " + req.body.navn);
+    console.log("Navn: " + req.body.name);
     pool.getConnection((err, connection) => {
         if (err) {
             console.log("Feil ved oppkobling");
@@ -111,7 +111,7 @@ router.post("/", (req, res) => {
                 password: req.body.password
             };
             connection.query(
-                "insert into users (name,age,email,password) values (" + "'" + users.name + "', " + users.age + ", '" + users.email + "'" + users.password + "')",
+                "insert into users (name,age,email,password) values (" + "'" + users.name + "', " + users.age + ", '" + users.email + "', '" + users.password + "')",
                 //person,
                 err => {
                     if (err) {

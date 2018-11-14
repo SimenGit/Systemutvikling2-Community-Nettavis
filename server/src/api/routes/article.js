@@ -32,7 +32,7 @@ router.get("/", (req, res, next) => {
       res.json({ error: "feil ved ved oppkobling" });
     } else {
       connection.query(
-        "select id, header, description, content, date_made, img, importance from article",
+        "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article",
         (err, rows) => {
           connection.release();
           if (err) {
@@ -50,32 +50,6 @@ router.get("/", (req, res, next) => {
 
 // get metode for å få artikkel med overskrift som nøkkel
 
-
-router.get("/:id", (req, res) => {
-    console.log("Fikk GET-request fra klient");
-    pool.getConnection((err, connection) => {
-        console.log("Connected to database");
-        if (err) {
-            console.log("Feil ved kobling til databasen");
-            res.json({ error: "feil ved ved oppkobling" });
-        } else {
-            connection.query(
-                "select id, header, description, content, date_made, img, importance from article where id=?",
-                [req.params.id],
-                (err, rows) => {
-                    connection.release();
-                    if (err) {
-                        console.log(err);
-                        res.json({ error: "error querying" });
-                    } else {
-                        console.log(rows);
-                        res.json(rows);
-                    }
-                }
-            );
-        }
-    });
-});
 
 router.post("/", upload.single('articleImage'),(req, res) => {
     console.log(req.file);
@@ -96,11 +70,11 @@ router.post("/", upload.single('articleImage'),(req, res) => {
         date_made: req.body.date_made,
         img: filen,
         importance: req.body.importance,
-        catagory_fk: req.body.catagory_fk,
+        category_fk: req.body.category_fk,
         user_fk: req.body.user_fk
       };
       connection.query(
-        "insert into article (header, description, content, date_made, img, importance, catagory_fk, user_fk) values (" +
+        "insert into article (header, description, content, date_made, img, importance, category_fk, user_fk) values (" +
           "'" +
           article.header +
           "', '" +

@@ -904,7 +904,7 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="226" parent="3" name="article"/>
-    <table id="227" parent="3" name="catagory"/>
+    <table id="227" parent="3" name="categories"/>
     <table id="228" parent="3" name="comments"/>
     <table id="229" parent="3" name="rating"/>
     <table id="230" parent="3" name="users"/>
@@ -948,7 +948,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="226" name="catagory_fk">
+    <column id="238" parent="226" name="category_fk">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -960,7 +960,7 @@
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="240" parent="226" name="catagory_fk">
-      <ColNames>catagory_fk</ColNames>
+      <ColNames>category_fk</ColNames>
       <Type>btree</Type>
     </index>
     <index id="241" parent="226" name="user_fk">
@@ -973,10 +973,10 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="243" parent="226" name="article_ibfk_1">
-      <ColNames>catagory_fk</ColNames>
+      <ColNames>category_fk</ColNames>
       <RefSchemaName>simenten</RefSchemaName>
-      <RefTableName>catagory</RefTableName>
-      <RefColNames>catagory</RefColNames>
+      <RefTableName>categories</RefTableName>
+      <RefColNames>category</RefColNames>
     </foreign-key>
     <foreign-key id="244" parent="226" name="article_ibfk_2">
       <ColNames>user_fk</ColNames>
@@ -984,7 +984,7 @@
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="245" parent="227" name="catagory">
+    <column id="245" parent="227" name="category">
       <Position>1</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
@@ -992,7 +992,7 @@
     </column>
     <key id="246" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>catagory</ColNames>
+      <ColNames>category</ColNames>
       <Primary>1</Primary>
     </key>
     <column id="247" parent="228" name="id">

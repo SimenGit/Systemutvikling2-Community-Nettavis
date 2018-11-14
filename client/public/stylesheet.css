@@ -1,10 +1,7 @@
-.aricleFront {
-    background-color: #721c24;
-}
 
 .frontPageArticles {
     background-color: #f8f8ff;
-    padding-top: 325px;
+    padding-top: 275px;
 }
 .card-img-top {
     width: 100%;
@@ -38,7 +35,6 @@
     right: 0;
     top: 0;
     z-index: 20;
-    background-color: #abdde5;
 }
 
 .logoTop {
@@ -51,8 +47,6 @@
     max-width: 100%;
     height: auto;
 }
-
-
 
 .img-fluid {
     max-width: 100%;
@@ -77,9 +71,6 @@
 
 }
 
-card-img-top {
-    height: 300px
-}
 
 .sidenav {
     height: 100%;
@@ -90,7 +81,7 @@ card-img-top {
     right: 0;
     background-color: #f8f8ff;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 .password {
@@ -102,22 +93,125 @@ card-img-top {
     text-align: left;
     background-color: #eee9e9;
 }
-
+.btn1 {
+    padding-bottom: 15px;
+}
 .btn2 {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 .btn3 {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 .btn4 {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 .btn5 {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 .btn6 {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
+
+.button1 {
+    width: 100%;
+}
+.button2 {
+    width: 100%;
+}
+.button3 {
+    width: 100%;
+}
+.button4 {
+    width: 100%;
+}
+.button5 {
+    width: 100%;
+}
+.button6 {
+    width: 100%;
+}
+
+
+
+.article-list {
+    background-color: white;
+}
+
+.col-sm-4 {
+    padding-left: 20px;
+}
+
+
+
+
+.regEmail {
+    display:block;
+    width: 280px;
+    position: relative;
+    margin:10px 0;
+}
+.registerUserBTN {
+    display:block;
+    width: 280px;
+    position: relative;
+    margin:10px 0;
+}
+.regPassword {
+    display:block;
+    width: 280px;
+    position: relative;
+    margin:10px 0;
+}
+.regName {
+    display:block;
+    width: 280px;
+    position: relative;
+    margin:10px 0;
+}
+.regAge{
+    display:block;
+    width: 280px;
+    position: relative;
+    margin:10px 0;
+}
+
+
+.createArticleForm {
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 600px;
+    padding-bottom: 175px;
+    overflow: scroll;
+}
+
+.createArticleTop {
+    padding-bottom: 50px;
+}
+
+.createArticleReturnBTN {
+    background-color: #e4606d;
+}
+
+.textAreaArticle {
+    height: 400px;
+}
+
+.uploadPhoto {
+    padding-top: 50px;
+}
+.submitArticleBTN {
+    background-color: #71dd8a;
+    width: 200px;
+    heigth: 40px;
+}
+
+.submitBTNPAD {
+    padding-top: 50px;
+}
+
+
+
+
 
 
 
