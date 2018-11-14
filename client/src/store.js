@@ -22,8 +22,8 @@ class ServerLink {
         return axios.get(`/users/${email}`);
     }
 
-    getArticleDetails(id) {
-        return axios.get(`/article/${id}`);
+    getArticleDetails(header) {
+        return axios.get(`/article/${header}`);
     }
 
     registerUser({email,password,name,age}) {
@@ -31,6 +31,10 @@ class ServerLink {
     }
     getCategories() {
         return axios.get(`/categories/`);
+    }
+
+    postArticle(formData, config) {
+        return axios.post(`/article/`, formData, config);
     }
 
 

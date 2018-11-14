@@ -3,6 +3,7 @@ import { Component } from 'react-simplified';
 import {serverLink} from "../store";
 import {history} from "../index";
 import {user} from "../store";
+import {FormText, Button, Input} from 'reactstrap';
 
 
 class NavBar extends Component {
@@ -14,6 +15,11 @@ class NavBar extends Component {
         output: '',
         loggedInn: true
     };
+
+    onClickLogOut() {
+        localStorage.removeItem("userEmail");
+        this.setState({output: ' '});
+    }
 
     onClick() {
 
@@ -37,34 +43,33 @@ class NavBar extends Component {
     }
 
   render() {
-      localStorage.removeItem("userEmail");
     return (
       <div className="nav-wrapper">
           <nav className="navbar fixed-top navbar-light bg-light">
               <div className="container">
                   <div className="row">
-                      <div className="col-sm">
-                          <button className = "form-control" onClick={this.onClickRegister}>
-                              Register
-                          </button>
-                      </div>
                         <div className="col-sm">
-                            <input type="email" className="form-control" aria-describedby="emailHelp"
+                            <Input type="email" className="form-control" aria-describedby="emailHelp"
                                    placeholder="Enter email" onChange={event => (this.state.username = event.target.value)}/>
                         </div>
                         <div className="col-sm">
-                            <input type="password" className="form-control" placeholder="Password"
+                            <Input type="password" className="form-control" placeholder="Password"
                                    onChange={event => (this.state.passwordInput = event.target.value)}/>
                         </div>
                          <div className="col-sm">
-                             <button className = "form-control" onClick={this.onClick}>
+                             <Button className = "form-control" onClick={this.onClick}>
                                  {' '}
                                  Log in
-                             </button>
+                             </Button>
                         </div>
+                      <div className="col-sm">
+                          <Button className = "form-control" onClick={this.onClickLogOut}>
+                              Log out
+                          </Button>
+                      </div>
 
                       <div className="col-sm-4">
-                        <text className = "form-control">Logged in as: {this.state.output}</text>
+                        <a className = "form-control">Logged in as: {this.state.output}</a>
                       </div>
 
                   </div>

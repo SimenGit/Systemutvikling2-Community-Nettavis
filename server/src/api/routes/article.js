@@ -48,10 +48,36 @@ router.get("/", (req, res, next) => {
   });
 });
 
-// get metode for å få artikkel med overskrift som nøkkel
+router.get("/:header", (req, res, next) => {
+    console.log("Fikk request fra klient");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where header = ?",
+                [req.params.header],
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({ error: "error querying" });
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
+});
 
 
-router.post("/", upload.single('articleImage'),(req, res) => {
+
+// POST
+router.post("/", upload.single('file'),(req, res) => {
     console.log(req.file);
   console.log("Fikk POST-request fra klienten");
   pool.getConnection((err, connection) => {
@@ -61,14 +87,14 @@ router.post("/", upload.single('articleImage'),(req, res) => {
     } else {
       console.log("Fikk databasekobling");
 
-      var filen = req.file.filename;
+      let file = req.file.originalname;
 
       const article = {
         header: req.body.header,
         description: req.body.description,
         content: req.body.content,
         date_made: req.body.date_made,
-        img: filen,
+        img: file,
         importance: req.body.importance,
         category_fk: req.body.category_fk,
         user_fk: req.body.user_fk
@@ -88,7 +114,7 @@ router.post("/", upload.single('articleImage'),(req, res) => {
           "', " +
           article.importance +
           ", '" +
-          article.catagory_fk +
+          article.category_fk +
           "', " +
           article.user_fk +
           ")",
