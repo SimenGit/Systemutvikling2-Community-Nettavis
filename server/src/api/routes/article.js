@@ -48,7 +48,8 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/:header", (req, res, next) => {
+
+router.get("/id/:header", (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -59,6 +60,32 @@ router.get("/:header", (req, res, next) => {
             connection.query(
                 "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where header = ?",
                 [req.params.header],
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({ error: "error querying" });
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
+});
+
+
+router.get("/important/", (req, res, next) => {
+    console.log("Fikk request fra klient");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where importance = 1",
                 (err, rows) => {
                     connection.release();
                     if (err) {

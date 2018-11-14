@@ -210,6 +210,15 @@
     padding-top: 50px;
 }
 
+.form-control-login {
+    background-color: #71dd8a;
+    padding-right: 20px;
+}
+.form-control-logout {
+    background-color: #efa2a9;
+    padding-left: 20px;
+}
+
 
 
 

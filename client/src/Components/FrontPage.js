@@ -31,7 +31,7 @@ class FrontPage extends Component {
 
     componentDidMount() {
 
-        serverLink.getArticles().then(data => {
+        serverLink.getArticlesImportant().then(data => {
             this.setState({ articles: data });
         });
     }

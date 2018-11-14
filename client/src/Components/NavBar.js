@@ -56,14 +56,15 @@ class NavBar extends Component {
                             <Input type="password" className="form-control" placeholder="Password"
                                    onChange={event => (this.state.passwordInput = event.target.value)}/>
                         </div>
-                         <div className="col-sm">
-                             <Button className = "form-control" onClick={this.onClick}>
+
+                         <div className="col-sm-login">
+                             <Button className = "form-control-login" onClick={this.onClick}>
                                  {' '}
                                  Log in
                              </Button>
                         </div>
-                      <div className="col-sm">
-                          <Button className = "form-control" onClick={this.onClickLogOut}>
+                      <div className="col-sm-logout">
+                          <Button className = "form-control-logout" onClick={this.onClickLogOut}>
                               Log out
                           </Button>
                       </div>

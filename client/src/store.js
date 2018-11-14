@@ -37,6 +37,10 @@ class ServerLink {
         return axios.post(`/article/`, formData, config);
     }
 
+    getArticlesImportant() {
+        return axios.get(`/article/important`);
+    }
+
 
 }
 

@@ -62,6 +62,8 @@ class PostArticle extends Component {
             alert("Article posted.");
             history.push("/");
 
+        }else{
+            alert("Fill in all fields.");
         }
 
     }
