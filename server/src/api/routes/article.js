@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 var mysql = require("mysql");
 const multer = require("multer");
+const ArticleDao = require("../dao/articleDao");
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -23,6 +25,44 @@ var pool = mysql.createPool({
   debug: false
 });
 
+
+let articleDao = new ArticleDao(pool);
+
+router.get('/',(req,res)=> {
+    articleDao.getAll((status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.get("/id/:id",(req,res)=> {
+    articleDao.getOne(req.params.id,(status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.get("/important",(req, res) => {
+    articleDao.getImportant((status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.delete("/:header", (req, res) => {
+    articleDao.deleteOne(req.params.header, (status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.post("/", upload.single('file'), (req, res) => {
+    articleDao.createOne(req.body, req.file, (status, data) => {
+      res.status(status);
+      res.json(data);
+    });
+});
+
+
+
+
+/*
 router.get("/", (req, res, next) => {
   console.log("Fikk request fra klient");
   pool.getConnection((err, connection) => {
@@ -47,8 +87,9 @@ router.get("/", (req, res, next) => {
     }
   });
 });
+*/
 
-
+/*
 router.get("/id/:id", (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -74,8 +115,9 @@ router.get("/id/:id", (req, res, next) => {
         }
     });
 });
+*/
 
-
+/*
 router.get("/important/", (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
@@ -100,9 +142,9 @@ router.get("/important/", (req, res, next) => {
         }
     });
 });
+*/
 
-
-
+/*
 // POST
 router.post("/", upload.single('file'),(req, res) => {
     console.log(req.file);
@@ -160,6 +202,7 @@ router.post("/", upload.single('file'),(req, res) => {
   });
 });
 
+/*
 //sletter artikler basert på overskrift.
 router.delete("/:header", (req, res) => {
   console.log("Fikk DELETE-request fra klienten");
@@ -186,5 +229,6 @@ router.delete("/:header", (req, res) => {
     }
   });
 });
+*/
 
 module.exports = router;

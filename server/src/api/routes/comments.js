@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var mysql = require("mysql");
+const CommentDao = require("../dao/commentDao");
 
 var pool = mysql.createPool({
     connectionLimit: 2,
@@ -11,6 +12,12 @@ var pool = mysql.createPool({
     debug: false
 });
 
+router.get('/:article_fk', (req,res)=> {
+});
+
+
+
+/*
 //henter kommentar ved artikkel_id fremmednøkkel
 router.get("/:id", (req, res) => {
     console.log("Fikk GET-request fra klient");
@@ -67,5 +74,7 @@ router.post("/", (req, res) => {
         }
     });
 });
+
+*/
 
 module.exports = router;

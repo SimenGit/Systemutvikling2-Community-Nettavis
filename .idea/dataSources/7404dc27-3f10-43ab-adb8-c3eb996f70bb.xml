@@ -1013,6 +1013,7 @@
     <column id="249" parent="228" name="user_fk_comment">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="250" parent="228" name="article_fk">
@@ -1046,58 +1047,87 @@
       <RefTableName>article</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="256" parent="229" name="rating">
-      <Position>1</Position>
-      <DataType>tinyint(1)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="257" parent="229" name="article_id_fk">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="258" parent="229" name="article_id_fk">
-      <ColNames>article_id_fk</ColNames>
-      <Type>btree</Type>
-    </index>
-    <foreign-key id="259" parent="229" name="rating_ibfk_1">
-      <ColNames>article_id_fk</ColNames>
-      <RefSchemaName>simenten</RefSchemaName>
-      <RefTableName>article</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="260" parent="230" name="id">
+    <column id="256" parent="229" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="230" name="name">
+    <column id="257" parent="229" name="rating">
+      <Position>2</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="229" name="article_fk">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="259" parent="229" name="user_fk">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="260" parent="229" name="article_fk">
+      <ColNames>article_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="261" parent="229" name="user_fk">
+      <ColNames>user_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="262" parent="229" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="263" parent="229" name="rating_ibfk_1">
+      <ColNames>article_fk</ColNames>
+      <RefSchemaName>simenten</RefSchemaName>
+      <RefTableName>article</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="264" parent="229" name="rating_ibfk_2">
+      <ColNames>user_fk</ColNames>
+      <RefSchemaName>simenten</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="265" parent="230" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="230" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="230" name="age">
+    <column id="267" parent="230" name="age">
       <Position>3</Position>
       <DataType>int(3)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="230" name="email">
+    <column id="268" parent="230" name="email">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="230" name="password">
+    <column id="269" parent="230" name="password">
       <Position>5</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="265" parent="230" name="PRIMARY">
+    <key id="270" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
