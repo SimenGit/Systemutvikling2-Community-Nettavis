@@ -166,7 +166,7 @@ class PostArticle extends Component {
                                onChange={event => (this.content = event.target.value)}/>
                     </FormGroup>
                     <FormGroup className="uploadPhoto">
-                        <Label for="exampleFile">Upload a photo with your article?</Label>
+                        <Label for="exampleFile">Upload a photo with your article</Label>
                         <Input type="file" name="file" id="exampleFile"
                                onChange={event => (this.file = event.target.files[0])}/>
                     </FormGroup>

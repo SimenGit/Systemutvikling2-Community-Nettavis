@@ -49,7 +49,7 @@ router.get("/", (req, res, next) => {
 });
 
 
-router.get("/id/:header", (req, res, next) => {
+router.get("/id/:id", (req, res, next) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -58,8 +58,8 @@ router.get("/id/:header", (req, res, next) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where header = ?",
-                [req.params.header],
+                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where id = ?",
+                [req.params.id],
                 (err, rows) => {
                     connection.release();
                     if (err) {

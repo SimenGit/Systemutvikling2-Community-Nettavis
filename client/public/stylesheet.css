@@ -37,6 +37,11 @@
     right: 0;
     top: 0;
     z-index: 20;
+    background-color: #1b1e21;
+}
+
+.navbar{
+    background-color: #1b1e21;
 }
 
 .logoTop {
@@ -80,7 +85,7 @@
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #f8f8ff;
+    background-color: 	#708090;
     overflow-x: hidden;
     padding-top: 60px;
 }
@@ -96,6 +101,7 @@
 }
 .btn1 {
     padding-bottom: 15px;
+    padding-top: 20px;
 }
 .btn2 {
     padding-bottom: 15px;
@@ -112,24 +118,37 @@
 .btn6 {
     padding-bottom: 15px;
 }
+.btn7 {
+    padding-bottom: 15px;
+}
 
 .button1 {
     width: 100%;
+    background-color: #1b1e21;
 }
 .button2 {
     width: 100%;
+    background-color: #1b1e21;
 }
 .button3 {
     width: 100%;
+    background-color: #1b1e21;
 }
 .button4 {
     width: 100%;
+    background-color: #1b1e21;
 }
 .button5 {
     width: 100%;
+    background-color: #1b1e21;
 }
 .button6 {
     width: 100%;
+    background-color: #1b1e21;
+}
+.button7 {
+    width: 100%;
+    background-color: #1b1e21;
 }
 
 
@@ -218,6 +237,59 @@
     background-color: #efa2a9;
     padding-left: 20px;
 }
+
+.container {
+    background-color: #1b1e21;
+}
+
+
+.articleDetailsWrapper {
+    padding: 100px 100px 200px 125px;
+}
+
+.imgDetails {
+    width: 70%;
+    padding:3px;
+    border:3px solid #021a40;
+}
+.postedBy {
+    padding-right: 20px;
+}
+
+.detailsTopPart {
+    padding-bottom: 10px;
+}
+
+.detailsHeader {
+    font-size: 80px;
+    border-bottom: 3px solid #0c5460;
+    display: inline;
+}
+
+.kommentarerText {
+    font-size:20px;
+    padding-top: 40px;
+    border-bottom: 3px solid #0c5460;
+    display: inline;
+}
+
+.articleContent {
+    padding-right: 450px;
+}
+
+.kommentarfelt {
+    padding-top: 50px;
+}
+
+.commentList{
+    padding-right: 400px;
+}
+
+.dineComments {
+    padding-right: 400px;
+}
+
+
 
 
 

@@ -16,6 +16,10 @@ class RightNav extends Component {
         }
     }
 
+    onClickRegisterUser() {
+        history.push("/registerUser");
+    }
+
     render() {
         return (
             <div id="mySidenav" className="sidenav">
@@ -35,10 +39,11 @@ class RightNav extends Component {
                     <div className = "btn5">
                     <Button className = "button5" >User profile</Button>
                     </div>
+                    <div className = "btn7" onClick = {this.onClickRegisterUser}>
+                        <Button className = "button7" >Register user</Button>
+                    </div>
                     <div className = "btn6">
                         <Button className = "button6" >Search for articles</Button>
-                    <Input className = "form-control" type="text" placeholder="type here..."/>
-
                     </div>
                 </div>
             </div>

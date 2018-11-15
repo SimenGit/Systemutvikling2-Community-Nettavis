@@ -37,8 +37,8 @@ router.get('/', (req, res, next) => {
     });
 });
 
-/*
-router.get("/:personId", (req, res) => {
+
+router.get("/id/:personId", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -64,7 +64,6 @@ router.get("/:personId", (req, res) => {
     });
 });
 
-*/
 
 //henter user ved email
 router.get("/:email", (req, res) => {

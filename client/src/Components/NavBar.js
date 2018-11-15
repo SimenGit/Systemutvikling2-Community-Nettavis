@@ -13,12 +13,14 @@ class NavBar extends Component {
         password: '',
         passwordInput: '',
         output: '',
-        loggedInn: true
+        loggedInn: false
     };
 
     onClickLogOut() {
         localStorage.removeItem("userEmail");
         this.setState({output: ' '});
+        alert("Du er nå logget ut.");
+        this.setState({loggedInn: false});
     }
 
     onClick() {
@@ -31,10 +33,12 @@ class NavBar extends Component {
                 this.setState({output: this.state.username});
                 localStorage.setItem("userEmail", this.state.username);
                 console.log("logget inn!");
+                this.setState({loggedInn: true});
             }else{
                 console.log("brukernavn eller passord missmatch.");
                 alert("username or password missmatch.");
             }
+
         });
     }
 
@@ -45,7 +49,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nav-wrapper">
-          <nav className="navbar fixed-top navbar-light bg-light">
+          <nav className="navbar fixed-top">
               <div className="container">
                   <div className="row">
                         <div className="col-sm">

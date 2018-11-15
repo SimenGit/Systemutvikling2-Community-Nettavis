@@ -928,13 +928,14 @@
     </column>
     <column id="234" parent="226" name="content">
       <Position>4</Position>
-      <DataType>varchar(2000)|0s</DataType>
+      <DataType>varchar(5000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="235" parent="226" name="date_made">
       <Position>5</Position>
       <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="236" parent="226" name="img">
@@ -951,6 +952,7 @@
     <column id="238" parent="226" name="category_fk">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="239" parent="226" name="user_fk">
@@ -1002,16 +1004,15 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="228" name="content">
+    <column id="248" parent="228" name="comment">
       <Position>2</Position>
       <DataType>varchar(300)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="228" name="user_fk">
+    <column id="249" parent="228" name="user_fk_comment">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="250" parent="228" name="article_fk">
@@ -1021,7 +1022,7 @@
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="251" parent="228" name="user_fk">
-      <ColNames>user_fk</ColNames>
+      <ColNames>user_fk_comment</ColNames>
       <Type>btree</Type>
     </index>
     <index id="252" parent="228" name="article_fk">
@@ -1034,7 +1035,7 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="254" parent="228" name="comments_ibfk_1">
-      <ColNames>user_fk</ColNames>
+      <ColNames>user_fk_comment</ColNames>
       <RefSchemaName>simenten</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>

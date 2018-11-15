@@ -10,8 +10,8 @@ class ServerLink {
         return axios.get('/article');
     }
 
-    getUser(id) {
-        return axios.get(`/users/${id}`);
+    getUserByID(id) {
+        return axios.get(`/users/id/${id}`);
     }
 
     getComments(id) {
@@ -24,6 +24,10 @@ class ServerLink {
 
     getArticleDetails(header) {
         return axios.get(`/article/${header}`);
+    }
+
+    getArticleById(id) {
+        return axios.get(`/article/id/${id}`);
     }
 
     registerUser({email,password,name,age}) {
@@ -39,6 +43,14 @@ class ServerLink {
 
     getArticlesImportant() {
         return axios.get(`/article/important`);
+    }
+
+    getCommentsByArticleID(id) {
+        return axios.get(`/comments/${id}`);
+    }
+
+    postComment({comment, user_fk_comment, article_fk}) {
+        return axios.post(`/comments`, {comment, user_fk_comment, article_fk});
     }
 
 
