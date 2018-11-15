@@ -12,7 +12,19 @@ var pool = mysql.createPool({
     debug: false
 });
 
+let commentDao = new CommentDao(pool);
+
 router.get('/:article_fk', (req,res)=> {
+    commentDao.getOneByArticle(req.params.article_fk, (status,data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.post('/', (req,res) => {
+    commentDao.createOne(req.body, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
 });
 
 

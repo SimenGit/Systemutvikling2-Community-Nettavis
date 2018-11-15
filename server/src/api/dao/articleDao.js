@@ -31,7 +31,6 @@ module.exports = class ArticleDao extends Dao {
             json.importance,
             json.category_fk,
             json.user_fk
-
         ];
         super.query(
             "insert into article (header, description, content, date_made, img, importance, category_fk, user_fk) values (?,?,?,?,?,?,?,?)",

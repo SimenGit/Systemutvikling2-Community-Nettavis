@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var mysql = require("mysql");
+const CategoriesDao = require("../dao/categoriesDao");
 
 var pool = mysql.createPool({
     connectionLimit: 2,
@@ -11,32 +12,13 @@ var pool = mysql.createPool({
     debug: false
 });
 
-router.get("/", (req, res, next) => {
-    console.log("Fikk request fra klient");
-    pool.getConnection((err, connection) => {
-        console.log("Connected to database");
-        if (err) {
-            console.log("Feil ved kobling til databasen");
-            res.json({ error: "feil ved ved oppkobling" });
-        } else {
-            connection.query(
-                "select category from categories",
-                (err, rows) => {
-                    connection.release();
-                    if (err) {
-                        console.log(err);
-                        res.json({ error: "error querying" });
-                    } else {
-                        console.log(rows);
-                        res.json(rows);
-                    }
-                }
-            );
-        }
+let categoriesDao = new CategoriesDao(pool);
+
+router.get('/', (req,res)=> {
+    categoriesDao.getAll((status, data) => {
+        res.status(status).json(data);
     });
 });
-
-
 
 
 module.exports = router;

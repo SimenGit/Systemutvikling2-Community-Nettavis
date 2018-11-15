@@ -1,8 +1,6 @@
-// @Flow
-
 const Dao = require("./dao.js");
 
-module.exports = class ArticleDao extends Dao {
+module.exports = class UserDao extends Dao {
 
     getAll(callback) {
         super.query("select * from users", [], callback);
