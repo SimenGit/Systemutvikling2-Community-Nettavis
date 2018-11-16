@@ -25,6 +25,9 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
     user_fk_comment = null;
     article_fk = null;
 
+    likes = null;
+    dislikes = null;
+
     state = {
         comments: {}
     };
@@ -50,8 +53,14 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
                 this.setState({ comments: data3 });
             });
 
-        });
+            serverLink.getLikes(this.article_fk).then(data4 => {
+                this.likes = data4[0].likes;
+            });
+            serverLink.getDislikes(this.article_fk).then(data5 => {
+                this.dislikes = data5[0].dislikes;
+            });
 
+        });
 
     }
 
@@ -111,6 +120,16 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
 
                     </FormGroup>
                     </div>
+
+                    <div className = "rating-felt">
+                        <FormGroup>
+                            <p>{"Likes: " + this.likes}</p>
+                            <p>{"Dislikes: " + this.dislikes}</p>
+
+                        </FormGroup>
+                    </div>
+
+
                     <div className = "kommentarfelt">
                         <FormGroup>
                             <h2 className = "kommentarerText">Kommentarer:</h2>

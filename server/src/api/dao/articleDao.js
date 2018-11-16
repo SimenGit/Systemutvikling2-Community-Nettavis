@@ -16,7 +16,7 @@ module.exports = class ArticleDao extends Dao {
 
     getImportant(callback) {
         super.query(
-            "select * from article where importance = 1", [], callback);
+            "select * from article where importance = 1 order by date_made desc", [], callback);
     }
 
 

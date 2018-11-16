@@ -12,8 +12,8 @@ class Article extends Component {
             <div className = "card">
                 <img className="card-img-top" src = {"images/"+this.props.article.img}/>
                     <div className="card-body">
+                        <i className = "card-Date">{this.props.article.date_made}</i>
                     <h5 className="card-title">{this.props.article.header}</h5>
-                    <p className="card-text"> {this.props.article.description}</p>
                         <Button className = "articleCardBTN" onClick = {this.onClick}>
                             Read more
                         </Button>

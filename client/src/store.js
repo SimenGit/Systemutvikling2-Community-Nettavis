@@ -53,6 +53,13 @@ class ServerLink {
         return axios.post(`/comments`, {comment, user_fk_comment, article_fk});
     }
 
+    getLikes(article_id) {
+        return axios.get(`/rating/likes/${article_id}`);
+    }
+    getDislikes(article_id) {
+        return axios.get(`/rating/dislikes/${article_id}`);
+    }
+
 
 }
 

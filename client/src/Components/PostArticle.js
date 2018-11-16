@@ -31,14 +31,22 @@ class PostArticle extends Component {
             let yyyy = this.date.getFullYear();
             let mm = this.date.getMonth() + 1;
             let dd = this.date.getDate();
+            let hour = this.date.getHours();
+            let minutes = this.date.getMinutes();
             if (dd < 10) {
                 dd = '0' + dd
             }
             if (mm < 10) {
                 mm = '0' + mm
             }
+            if (hour < 10) {
+                hour = '0' + hour
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
 
-            let date_made = yyyy + "-" + mm + '-' + dd;
+            let date_made = yyyy + "-" + mm + '-' + dd + " " + hour + ":" + minutes + ":00";
 
             const formData = new FormData();
             formData.append('file', this.file);

@@ -10,14 +10,14 @@ module.exports = class RatingDao extends Dao {
     }
 
     getLikes(article_fk, callback) {
-        super.query("select count(*) from rating where rating = 1 and article_fk = ?",
+        super.query("select count(*) AS likes from rating where rating = 1 and article_fk = ?",
             [article_fk],
             callback
         );
     }
 
     getDislikes(article_fk, callback) {
-        super.query("select count(*) from rating where rating = 0 and article_fk = ?",
+        super.query("select count(*) AS dislikes from rating where rating = 0 and article_fk = ?",
             [article_fk],
             callback
         );
