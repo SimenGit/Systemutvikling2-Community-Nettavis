@@ -34,6 +34,12 @@ router.get('/',(req,res)=> {
     });
 });
 
+router.get('/header/:header', (req,res) => {
+    articleDao.getByHeader(req.params.header, (status,data) => {
+        res.status(status).json(data);
+    });
+});
+
 router.get("/id/:id",(req,res)=> {
     articleDao.getOne(req.params.id,(status, data) => {
         res.status(status).json(data);
@@ -42,6 +48,12 @@ router.get("/id/:id",(req,res)=> {
 
 router.get("/important",(req, res) => {
     articleDao.getImportant((status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.get("/newsfeed", (req, res) => {
+    articleDao.getNewsFeed((status, data) => {
         res.status(status).json(data);
     });
 });
@@ -59,176 +71,12 @@ router.post("/", upload.single('file'), (req, res) => {
     });
 });
 
-
-
-
-/*
-router.get("/", (req, res, next) => {
-  console.log("Fikk request fra klient");
-  pool.getConnection((err, connection) => {
-    console.log("Connected to database");
-    if (err) {
-      console.log("Feil ved kobling til databasen");
-      res.json({ error: "feil ved ved oppkobling" });
-    } else {
-      connection.query(
-        "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article",
-        (err, rows) => {
-          connection.release();
-          if (err) {
-            console.log(err);
-            res.json({ error: "error querying" });
-          } else {
-            console.log(rows);
-            res.json(rows);
-          }
-        }
-      );
-    }
-  });
-});
-*/
-
-/*
-router.get("/id/:id", (req, res, next) => {
-    console.log("Fikk request fra klient");
-    pool.getConnection((err, connection) => {
-        console.log("Connected to database");
-        if (err) {
-            console.log("Feil ved kobling til databasen");
-            res.json({ error: "feil ved ved oppkobling" });
-        } else {
-            connection.query(
-                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where id = ?",
-                [req.params.id],
-                (err, rows) => {
-                    connection.release();
-                    if (err) {
-                        console.log(err);
-                        res.json({ error: "error querying" });
-                    } else {
-                        console.log(rows);
-                        res.json(rows);
-                    }
-                }
-            );
-        }
+router.patch("/:header", (req,res) => {
+    let header = req.params.header;
+    articleDao.patchOne(header, req.body, (status, data) => {
+        res.status(status).json(data);
     });
 });
-*/
 
-/*
-router.get("/important/", (req, res, next) => {
-    console.log("Fikk request fra klient");
-    pool.getConnection((err, connection) => {
-        console.log("Connected to database");
-        if (err) {
-            console.log("Feil ved kobling til databasen");
-            res.json({ error: "feil ved ved oppkobling" });
-        } else {
-            connection.query(
-                "select id, header, description, content, date_made, img, importance, category_fk, user_fk from article where importance = 1",
-                (err, rows) => {
-                    connection.release();
-                    if (err) {
-                        console.log(err);
-                        res.json({ error: "error querying" });
-                    } else {
-                        console.log(rows);
-                        res.json(rows);
-                    }
-                }
-            );
-        }
-    });
-});
-*/
-
-/*
-// POST
-router.post("/", upload.single('file'),(req, res) => {
-    console.log(req.file);
-  console.log("Fikk POST-request fra klienten");
-  pool.getConnection((err, connection) => {
-    if (err) {
-      console.log("Feil ved oppkobling");
-      res.json({ error: "feil ved oppkobling" });
-    } else {
-      console.log("Fikk databasekobling");
-
-      let file = req.file.originalname;
-
-      const article = {
-        header: req.body.header,
-        description: req.body.description,
-        content: req.body.content,
-        date_made: req.body.date_made,
-        img: file,
-        importance: req.body.importance,
-        category_fk: req.body.category_fk,
-        user_fk: req.body.user_fk
-      };
-      connection.query(
-        "insert into article (header, description, content, date_made, img, importance, category_fk, user_fk) values (" +
-          "'" +
-          article.header +
-          "', '" +
-          article.description +
-          "', '" +
-          article.content +
-          "', '" +
-          article.date_made +
-          "', '" +
-          article.img +
-          "', " +
-          article.importance +
-          ", '" +
-          article.category_fk +
-          "', " +
-          article.user_fk +
-          ")",
-        err => {
-          if (err) {
-            console.log(err);
-            res.status(500);
-            res.json({ error: "Feil ved insert" });
-          } else {
-            console.log("insert ok");
-            res.send("");
-          }
-        }
-      );
-    }
-  });
-});
-
-/*
-//sletter artikler basert på overskrift.
-router.delete("/:header", (req, res) => {
-  console.log("Fikk DELETE-request fra klienten");
-  pool.getConnection((err, connection) => {
-    if (err) {
-      console.log("Feil ved oppkobling");
-      res.json({ error: "feil ved oppkobling" });
-    } else {
-      console.log("Fikk databasekobling");
-      connection.query(
-        "delete from article  where header = ?",
-        [req.params.overskriften],
-        err => {
-          if (err) {
-            console.log(err);
-            res.status(500);
-            res.json({ error: "Feil ved insert" });
-          } else {
-            console.log("delete ok");
-            res.send("");
-          }
-        }
-      );
-    }
-  });
-});
-*/
 
 module.exports = router;

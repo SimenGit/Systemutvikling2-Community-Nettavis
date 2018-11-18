@@ -934,7 +934,7 @@
     </column>
     <column id="235" parent="226" name="date_made">
       <Position>5</Position>
-      <DataType>date|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

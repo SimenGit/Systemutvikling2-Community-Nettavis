@@ -1,7 +1,7 @@
 
 .frontPageArticles {
     background-color: white;
-    padding-top: 175px;
+    padding-top: 25px;
     padding-left: 75px;
 }
 .card-img-top {
@@ -288,6 +288,40 @@
 .dineComments {
     padding-right: 400px;
 }
+
+.frontPageNewsFeed{
+    padding-right: 400px;
+    padding-left: 175px;
+    padding-top: 10px;
+}
+
+.newsfeedtext {
+    padding-right: 400px;
+    padding-left: 175px;
+    padding-top: 100px;
+}
+
+.deleteArticlesWrapper {
+    padding-top: 200px;
+    padding-right: 600px;
+    padding-left: 200px;
+}
+
+.updateArticleWrappper {
+    padding: 200px 600px 200px 200px;
+}
+
+.inputValues {
+    padding-top: 30px;
+    padding-right: 400px;
+    padding-left: 100px;
+}
+
+.inputUpdateTop {
+    padding-bottom: 50px;
+
+}
+
 
 
 

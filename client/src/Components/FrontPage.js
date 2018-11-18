@@ -2,23 +2,46 @@
 
 import {Component} from "react-simplified";
 import Article from "./Article";
+import NewsFeed from "./NewsFeed";
 import React from "react";
 import {serverLink} from "../store";
 import { Button } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 class FrontPage extends Component {
 
     state = {
         articles: {},
-        username: ''
+        username: '',
+        newsfeed: {}
     };
+
+
+    /*
+    updateNews() {
+        this.state.newsfeed.length > 0 &&
+        this.state.newsfeed.map(newsfeed => {
+            return <NewsFeed newsfeed={newsfeed}/>;
+        });
+    }
+    */
+
 
     render() {
         return (
             <div className="frontPage">
-                <div className="logoTop">
-                    <img src="/logos/logoFront.png" className="img-fluid" alt="Responsive image"/>
+
+                <div className = "newsfeedtext">
+                    <b>Newsfeed</b>
                 </div>
+
+                <div className="frontPageNewsFeed">
+                    {this.state.newsfeed.length > 0 &&
+                    this.state.newsfeed.map(newsfeed => {
+                        return <NewsFeed newsfeed={newsfeed}/>;
+                    })}
+                </div>
+
                 <div className="frontPageArticles">
                     {this.state.articles.length > 0 &&
                     this.state.articles.map(article => {
@@ -31,8 +54,14 @@ class FrontPage extends Component {
 
     componentDidMount() {
 
+        //setInterval(this.updateNews, 60000);
+
         serverLink.getArticlesImportant().then(data => {
             this.setState({ articles: data });
+        });
+
+        serverLink.getArticlesNewsFeed().then(data => {
+            this.setState({ newsfeed: data });
         });
     }
 }

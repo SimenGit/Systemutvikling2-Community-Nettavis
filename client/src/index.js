@@ -7,6 +7,8 @@ import RightNav from "./Components/RightNav";
 import ArticleDetails from "./Components/ArticleDetails";
 import RegisterUser from './Components/RegisterUser';
 import PostArticle from './Components/PostArticle';
+import DeleteArticle from './Components/DeleteArticle';
+import UpdateArticle from "./Components/UpdateArticle";
 
 import { HashRouter, Route } from 'react-router-dom';
 import createHashHistory from 'history/createHashHistory';
@@ -24,6 +26,8 @@ if (root)
             <Route exact path="/articleDetails/:id" component={ArticleDetails} />
             <Route exact path="/registerUser" component = {RegisterUser}/>
             <Route exact path="/postArticle" component = {PostArticle}/>
+            <Route exact path="/deleteArticle" component = {DeleteArticle}/>
+            <Route exact path="/updateArticle" component = {UpdateArticle}/>
         </div>
         </HashRouter>,
         root

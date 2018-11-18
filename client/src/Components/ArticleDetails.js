@@ -149,7 +149,6 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
                             <Button className = "form-control" onClick = {this.submitComment}>Submit</Button>
                         </FormGroup>
 
-
                     </div>
                 </Form>
             </div>

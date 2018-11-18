@@ -22,6 +22,10 @@ class ServerLink {
         return axios.get(`/users/${email}`);
     }
 
+    getByHeader(header) {
+        return axios.get(`/article/header/${header}`)
+    }
+
     getArticleDetails(header) {
         return axios.get(`/article/${header}`);
     }
@@ -40,17 +44,26 @@ class ServerLink {
     postArticle(formData, config) {
         return axios.post(`/article/`, formData, config);
     }
+    deleteArticle(header) {
+        return axios.delete(`/article/${header}`);
+    }
 
     getArticlesImportant() {
         return axios.get(`/article/important`);
+    }
+    getArticlesNewsFeed() {
+        return axios.get(`/article/newsfeed`);
     }
 
     getCommentsByArticleID(id) {
         return axios.get(`/comments/${id}`);
     }
+    deleteComments(article_fk) {
+        return axios.delete(`/comments/${article_fk}`);
+    }
 
     postComment({comment, user_fk_comment, article_fk}) {
-        return axios.post(`/comments`, {comment, user_fk_comment, article_fk});
+        return axios.post(`/comments/`, {comment, user_fk_comment, article_fk});
     }
 
     getLikes(article_id) {
@@ -58,6 +71,10 @@ class ServerLink {
     }
     getDislikes(article_id) {
         return axios.get(`/rating/dislikes/${article_id}`);
+    }
+
+    patchArticle(header) {
+        return axios.patch(`/articles/${header}`);
     }
 
 

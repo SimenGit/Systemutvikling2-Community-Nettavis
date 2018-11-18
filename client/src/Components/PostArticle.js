@@ -4,7 +4,6 @@ import {serverLink} from "../store";
 import {history} from "../index";
 import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
-
 class PostArticle extends Component {
 
     header = null;
@@ -63,7 +62,6 @@ class PostArticle extends Component {
                     'content-type': 'multipart/form-data'
                 }
             };
-
             serverLink.postArticle(formData, config);
             console.log("Inserted.");
 
@@ -83,7 +81,6 @@ class PostArticle extends Component {
         serverLink.getUserByEmail(this.user_email).then(data => {
             this.user_fk = data[0].id;
         });
-
 
     }
 
@@ -166,8 +163,6 @@ class PostArticle extends Component {
                             </Label>
                         </FormGroup>
                     </FormGroup>
-
-
                     <FormGroup>
                         <Label for="exampleText">Write the article here</Label>
                         <Input className="textarea" type="textarea" name="text" id="exampleText"

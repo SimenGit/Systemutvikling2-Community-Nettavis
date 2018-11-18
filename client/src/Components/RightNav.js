@@ -16,8 +16,16 @@ class RightNav extends Component {
         }
     }
 
+    onClickDelete() {
+        history.push('/deleteArticle');
+    }
+
     onClickRegisterUser() {
         history.push("/registerUser");
+    }
+
+    onClickUpdate() {
+        history.push("/updateArticle");
     }
 
     render() {
@@ -34,10 +42,10 @@ class RightNav extends Component {
                 <Button className = "button3" onClick={this.onClickPost}>Post article</Button>
                     </div>
                     <div className = "btn4">
-                <Button className = "button4" >Delete article</Button>
+                <Button className = "button4" onClick = {this.onClickDelete}>Delete article</Button>
                     </div>
                     <div className = "btn5">
-                    <Button className = "button5" >User profile</Button>
+                    <Button className = "button5" onClick={this.onClickUpdate} >Update article</Button>
                     </div>
                     <div className = "btn7" onClick = {this.onClickRegisterUser}>
                         <Button className = "button7" >Register user</Button>
