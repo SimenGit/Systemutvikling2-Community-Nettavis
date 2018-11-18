@@ -51,6 +51,11 @@ class ServerLink {
     getArticlesImportant() {
         return axios.get(`/article/important`);
     }
+
+    getArticleByCategory(category) {
+        return axios.get(`/article/category/${category}`)
+    }
+
     getArticlesNewsFeed() {
         return axios.get(`/article/newsfeed`);
     }
@@ -73,9 +78,11 @@ class ServerLink {
         return axios.get(`/rating/dislikes/${article_id}`);
     }
 
-    patchArticle(header) {
-        return axios.patch(`/articles/${header}`);
+    patchArticle(oldHeader, {header, description, content, importance}) {
+        return axios.patch(`/article/${oldHeader}`, {header, description, content, importance});
     }
+
+
 
 
 }

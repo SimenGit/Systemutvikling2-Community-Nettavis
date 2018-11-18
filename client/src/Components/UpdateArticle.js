@@ -16,8 +16,26 @@ class UpdateArticle extends Component {
 
         if(this.newHeader !== null && this.newContent !== null && this.newDescription !== null
         && this.newImportance !== null && this.header !== null) {
-            console.log(this.header);
-            serverLink.patchArticle(this.header);
+
+            const newValues = {
+                header: this.newHeader,
+                description: this.newDescription,
+                content: this.newContent,
+                importance: this.newImportance
+            };
+            const formData = new FormData();
+
+            console.log(this.newDescription);
+            console.log(this.newHeader);
+            console.log(this.newContent);
+            console.log(this.newImportance);
+
+            formData.append('header', this.newHeader);
+            formData.append('description', this.newDescription);
+            formData.append('content', this.newContent);
+            formData.append('importance', this.newImportance);
+
+            serverLink.patchArticle(this.header, newValues);
             alert("updated.")
         }else{
             alert("Fill in all fields");

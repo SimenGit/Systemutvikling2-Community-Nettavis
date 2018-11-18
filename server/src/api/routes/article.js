@@ -78,5 +78,12 @@ router.patch("/:header", (req,res) => {
     });
 });
 
+router.get("/category/:category", (req,res) => {
+    let category = req.params.category;
+    articleDao.getArticleByCategory(category, (status,data) => {
+        res.status(status).json(data);
+    });
+});
+
 
 module.exports = router;

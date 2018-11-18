@@ -115,12 +115,7 @@
 .btn5 {
     padding-bottom: 15px;
 }
-.btn6 {
-    padding-bottom: 15px;
-}
-.btn7 {
-    padding-bottom: 15px;
-}
+
 
 .button1 {
     width: 100%;
@@ -142,14 +137,7 @@
     width: 100%;
     background-color: #1b1e21;
 }
-.button6 {
-    width: 100%;
-    background-color: #1b1e21;
-}
-.button7 {
-    width: 100%;
-    background-color: #1b1e21;
-}
+
 
 
 
@@ -322,6 +310,31 @@
 
 }
 
+.menuDropDown {
+    background-color: #1b1e21;
+    width: 100%;
+}
+
+.menuDropDownOver {
+    width: 100%;
+}
+
+.articlesByCategory {
+    padding-bottom: 100px;
+
+}
+
+.articlesByCategoryTop {
+    padding-right: 400px;
+    padding-left: 175px;
+    padding-top: 100px;
+}
+
+.catArticles {
+    padding-right: 400px;
+    padding-top: 30px;
+    padding-left: 100px;
+}
 
 
 

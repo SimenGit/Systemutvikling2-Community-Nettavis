@@ -72,8 +72,15 @@ module.exports = class ArticleDao extends Dao {
             val,
             callback
         );
-
     }
+
+    getArticleByCategory(category, callback) {
+        super.query("select * from article where category_fk = ?",
+            [category],
+            callback
+        );
+    }
+
 
 
 };
