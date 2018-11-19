@@ -1,394 +1,377 @@
-
 .frontPageArticles {
-    background-color: white;
-    padding-top: 25px;
-    padding-left: 100px;
+  background-color: white;
+  padding-top: 25px;
+  padding-left: 100px;
 }
 .card-img-top {
-    width: 100%;
-    height: 30vw;
-    object-fit: cover;
+  width: 100%;
+  height: 30vw;
+  object-fit: cover;
 }
 
-
 .articleCardBTN {
-    width: 100%;
+  width: 100%;
 }
 
 .card {
-    position: relative;
-    width: 800px;
-    height: 500px;
-    padding-bottom: 50px;
+  position: relative;
+  width: 800px;
+  height: 500px;
+  padding-bottom: 50px;
 }
 
 .card-title {
-    text-align: center;
+  text-align: center;
 }
 
 .card-text {
-    text-align: center;
+  text-align: center;
 }
-
 
 .nav-wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 20;
-    background-color: #1b1e21;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  background-color: #1b1e21;
 }
 
-.navbar{
-    background-color: #1b1e21;
-}
-
-.logoTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    flex: 1;
-    max-width: 100%;
-    height: auto;
+.navbar {
+  background-color: #1b1e21;
 }
 
 .img-fluid {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .viewComments {
-    top: 0;
+  top: 0;
 }
 
 .emailField {
-    max-width: 200px;
-    position: fixed;
+  max-width: 200px;
+  position: fixed;
 }
 .passwordField {
-    max-width: 20px;
-    position: fixed;
+  max-width: 20px;
+  position: fixed;
 }
 
 .article-list {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 
-
 .sidenav {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: 	#708090;
-    overflow-x: hidden;
-    padding-top: 60px;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #708090;
+  overflow-x: hidden;
+  padding-top: 60px;
 }
 
 .password {
-    position: absolute;
-    bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .form-control {
-    text-align: left;
-    background-color: #eee9e9;
+  text-align: left;
+  background-color: #eee9e9;
 }
 .btn1 {
-    padding-bottom: 15px;
-    padding-top: 20px;
+  padding-bottom: 15px;
+  padding-top: 43px;
 }
 .btn2 {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .btn3 {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .btn4 {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .btn5 {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
-
 
 .button1 {
-    width: 100%;
-    background-color: #1b1e21;
+  width: 100%;
+  background-color: #1b1e21;
 }
 .button2 {
-    width: 100%;
-    background-color: #1b1e21;
+  width: 100%;
+  background-color: #1b1e21;
 }
 .button3 {
-    width: 100%;
-    background-color: #1b1e21;
+  width: 100%;
+  background-color: #1b1e21;
 }
 .button4 {
-    width: 100%;
-    background-color: #1b1e21;
+  width: 100%;
+  background-color: #1b1e21;
 }
 .button5 {
-    width: 100%;
-    background-color: #1b1e21;
+  width: 100%;
+  background-color: #1b1e21;
 }
 
-
-
-
 .article-list {
-    background-color: white;
+  background-color: white;
 }
 
 .col-sm-4 {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .registerUserPage {
-    padding-top: 150px;
-    padding-left: 75px;
+  padding-top: 150px;
+  padding-left: 75px;
 }
 
 .registerUserPageDetails {
-    padding-bottom: 35px;
+  padding-bottom: 35px;
 }
 
 .regEmail {
-    display:block;
-    width: 280px;
-    position: relative;
-    margin:10px 0;
+  display: block;
+  width: 280px;
+  position: relative;
+  margin: 10px 0;
 }
 
 .regPassword {
-    display:block;
-    width: 280px;
-    position: relative;
-    margin:10px 0;
+  display: block;
+  width: 280px;
+  position: relative;
+  margin: 10px 0;
 }
 .regName {
-    display:block;
-    width: 280px;
-    position: relative;
-    margin:10px 0;
+  display: block;
+  width: 280px;
+  position: relative;
+  margin: 10px 0;
 }
-.regAge{
-    display:block;
-    width: 280px;
-    position: relative;
-    margin:10px 0;
+.regAge {
+  display: block;
+  width: 280px;
+  position: relative;
+  margin: 10px 0;
 }
-
 
 .createArticleForm {
-    padding-top: 100px;
-    padding-left: 50px;
-    padding-right: 600px;
-    padding-bottom: 175px;
-    overflow: scroll;
+  padding-top: 200px;
+  padding-left: 50px;
+  padding-right: 600px;
+  padding-bottom: 175px;
+  overflow: scroll;
 }
 
 .createArticleTop {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .createArticleReturnBTN {
-    background-color: #e4606d;
+  background-color: #e4606d;
 }
 
 .textAreaArticle {
-    height: 400px;
+  height: 400px;
 }
 
 .uploadPhoto {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 .submitArticleBTN {
-    background-color: #71dd8a;
-    width: 200px;
-    heigth: 40px;
+  background-color: #71dd8a;
+  width: 200px;
+  heigth: 40px;
 }
 
 .submitBTNPAD {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .form-control-login {
-    background-color: #71dd8a;
-    padding-right: 20px;
+  background-color: #71dd8a;
+  padding-right: 20px;
 }
 .form-control-logout {
-    background-color: #efa2a9;
-    padding-left: 20px;
+  background-color: #efa2a9;
+  padding-left: 20px;
 }
-
-.container {
-    background-color: #1b1e21;
-}
-
 
 .articleDetailsWrapper {
-    padding: 100px 100px 200px 125px;
+  padding: 200px 100px 200px 125px;
 }
 
 .imgDetails {
-    width: 70%;
-    padding:3px;
-    border:3px solid #021a40;
+  width: 70%;
+  padding: 3px;
+  border: 3px solid #021a40;
 }
 .postedBy {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 
 .detailsTopPart {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .detailsHeader {
-    font-size: 80px;
-    border-bottom: 3px solid #0c5460;
-    display: inline;
+  font-size: 80px;
+  border-bottom: 3px solid #0c5460;
+  display: inline;
 }
 
 .kommentarerText {
-    font-size:20px;
-    padding-top: 40px;
-    border-bottom: 3px solid #0c5460;
-    display: inline;
+  font-size: 20px;
+  padding-top: 40px;
+  border-bottom: 3px solid #0c5460;
+  display: inline;
 }
 
 .articleContent {
-    padding-right: 450px;
+  padding-right: 450px;
 }
 
 .kommentarfelt {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
-.commentList{
-    padding-right: 400px;
+.commentList {
+  padding-right: 400px;
 }
 
 .dineComments {
-    padding-right: 400px;
+  padding-right: 400px;
 }
 
-.frontPageNewsFeed{
-    padding-right: 400px;
-    padding-left: 175px;
-    padding-top: 10px;
+.frontPageNewsFeed {
+  padding-right: 400px;
+  padding-left: 175px;
+  padding-top: 10px;
 }
 
 .newsfeedtext {
-    padding-right: 400px;
-    padding-left: 175px;
-    padding-top: 100px;
+  padding-right: 400px;
+  padding-left: 175px;
+  padding-top: 150px;
 }
 
 .deleteArticlesWrapper {
-    padding-top: 100px;
-    padding-right: 600px;
-    padding-left: 50px;
+  padding-top: 200px;
+  padding-right: 600px;
+  padding-left: 50px;
 }
 
 .updateArticleWrappper {
-    padding: 100px 600px 200px 50px;
+  padding: 200px 600px 200px 50px;
 }
 
 .inputTopSecond {
-    padding-bottom: 35px;
+  padding-bottom: 35px;
 }
 
 .inputValues {
-    padding-top: 30px;
-    padding-right: 400px;
-    padding-left: 100px;
+  padding-top: 30px;
+  padding-right: 400px;
+  padding-left: 100px;
 }
 
 .inputUpdateTop {
-    padding-bottom: 50px;
-
+  padding-bottom: 50px;
 }
 
 .menuDropDown {
-    background-color: #1b1e21;
-    width: 100%;
+  background-color: #1b1e21;
+  width: 100%;
 }
 
 .menuDropDownOver {
-    width: 100%;
+  width: 100%;
 }
 
 .articlesByCategory {
-    padding-bottom: 100px;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
 
 .articlesByCategoryTop {
-    padding-right: 400px;
-    padding-left: 100px;
-    padding-top: 100px;
+  padding-right: 400px;
+  padding-left: 100px;
+  padding-top: 100px;
 }
 
 .catArticles {
-    padding-right: 400px;
-    padding-left: 100px;
+  padding-right: 400px;
+  padding-left: 100px;
 }
 .deleteSubmitBTN {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 .deleteTop {
-    padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
-.updateSubmit{
-    padding-top: 30px;
+.updateSubmit {
+  padding-top: 30px;
 }
 
 .textTopCat {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 .articleDetailsReturnField {
-    padding-bottom: 35px;
+  padding-bottom: 35px;
 }
 
 .categoryText {
-    size: 40px;
+  size: 40px;
 }
 
-.likesImg{
-    height: 25px;
-    width: 25px;
+.likesImg {
+  height: 25px;
+  width: 25px;
 }
-.dislikesImg{
-    height: 25px;
-    width: 25px;
+.dislikesImg {
+  height: 25px;
+  width: 25px;
 }
 
 .likesBTN {
-    background-color: #71dd8a;
+  background-color: #71dd8a;
 }
 .dislikesBTN {
-    background-color: #e4606d;
+  background-color: #e4606d;
 }
 
 .likesField {
-    padding-top: 35px;
+  padding-top: 35px;
 }
 
+.frontPageNewsFeedVertical {
+  position: fixed;
+  left: 0;
+  right: 250px;
+  top: 54px;
+  z-index: 20;
+}
 
+.newsCol {
+  max-width: 20px;
+}
 
+.ListGroupItem {
+  max-width: 30px;
+}
 
-
-
-
-
-
-
-
-
+.containerNews {
+  background-color: #708090;
+}

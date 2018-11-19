@@ -1,37 +1,22 @@
-const Dao = require("./dao.js");
+// @flow
+
+const Dao = require('./dao.js');
 
 module.exports = class UserDao extends Dao {
+  getAll(callback) {
+    super.query('select * from users', [], callback);
+  }
 
-    getAll(callback) {
-        super.query("select * from users", [], callback);
-    }
+  getOneById(id, callback) {
+    super.query('select * from users where id = ?', [id], callback);
+  }
 
-    getOneById(id, callback) {
-        super.query("select * from users where id = ?",
-            [id],
-            callback
-        );
-    }
+  getOneByEmail(email, callback) {
+    super.query('select * from users where email = ?', [email], callback);
+  }
 
-    getOneByEmail(email, callback) {
-        super.query("select * from users where email = ?",
-            [email],
-            callback
-        );
-    }
-
-    createOne(json, callback) {
-        const val = [
-            json.name,
-            json.age,
-            json.email,
-            json.password
-        ];
-        super.query("insert into users (name,age,email,password) values (?,?,?,?)",
-            val,
-            callback
-        );
-    }
-
-
+  createOne(json, callback) {
+    const val = [json.name, json.age, json.email, json.password];
+    super.query('insert into users (name,age,email,password) values (?,?,?,?)', val, callback);
+  }
 };
