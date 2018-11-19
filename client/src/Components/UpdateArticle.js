@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Component} from 'react-simplified';
 import {Input, Label, Button, FormGroup, Form} from 'reactstrap';
 import {serverLink} from "../store";
+import {history} from "../index";
 
 class UpdateArticle extends Component {
 
@@ -11,6 +12,10 @@ class UpdateArticle extends Component {
     newDescription = null;
     newContent = null;
     newImportance = null;
+
+    onClickReturn() {
+        history.push("/");
+    }
 
     onClickSubmit() {
 
@@ -51,10 +56,13 @@ class UpdateArticle extends Component {
                     <FormGroup>
                         <div className = "inputUpdateTop">
                             <h1>Update page</h1>
-                            <Label for="exampleText">Write the header of which article to update here</Label>
-                            <Input className="textarea" name="text" placeholder = "header"
-                               onChange={event => (this.header = event.target.value)}/>
+                            <Button className="createArticleReturnBTN" onClick={this.onClickReturn}>Return to HomePage</Button>
                         </div>
+                            <div className = "inputTopSecond">
+                                <Label for="exampleText">Write the header of which article to update here</Label>
+                                <Input className="textarea" name="text" placeholder = "header"
+                               onChange={event => (this.header = event.target.value)}/>
+                            </div>
                     </FormGroup>
                     <FormGroup>
                         <Input className="textarea" name="text" placeholder = "new header"
@@ -88,7 +96,9 @@ class UpdateArticle extends Component {
                             </Label>
                         </FormGroup>
                     <FormGroup>
-                        <Button className="deleteSubmitBTN" onClick={this.onClickSubmit}>Update article</Button>
+                        <div className = "updateSubmit">
+                        <Button className="submitArticleBTN" onClick={this.onClickSubmit}>Submit update</Button>
+                        </div>
                     </FormGroup>
 
                 </Form>

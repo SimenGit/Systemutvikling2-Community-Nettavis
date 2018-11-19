@@ -1,8 +1,7 @@
 import React from 'react';
 import { Component } from 'react-simplified';
 import {history} from "../index";
-import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class RightNav extends Component {
 
@@ -12,11 +11,10 @@ class RightNav extends Component {
 
     onClickPost()  {
         var userEmail = localStorage.getItem("userEmail");
-        console.log(userEmail);
         if(userEmail !== null) {
             history.push('/postArticle');
         }else{
-            alert("You have to be logged in to post articles.");
+            alert("You have to be logged in to use this feature");
         }
     }
 
@@ -25,10 +23,9 @@ class RightNav extends Component {
     }
 
     onClickFood() {
-        let category = "food";
-        localStorage.setItem("category", category);
-        history.push("/categoryArticle");
-
+            let category = "food";
+            localStorage.setItem("category", category);
+            history.push("/categoryArticle");
     }
     onClickMotor() {
         let category = "motor";
@@ -53,7 +50,12 @@ class RightNav extends Component {
 
 
     onClickDelete() {
-        history.push('/deleteArticle');
+        var userEmail = localStorage.getItem("userEmail");
+        if(userEmail !== null) {
+            history.push('/deleteArticle');
+        }else{
+            alert("You have to be logged in to use this feature");
+        }
     }
 
     onClickRegisterUser() {
@@ -61,7 +63,12 @@ class RightNav extends Component {
     }
 
     onClickUpdate() {
-        history.push("/updateArticle");
+        var userEmail = localStorage.getItem("userEmail");
+        if(userEmail !== null) {
+            history.push("/updateArticle");
+        }else{
+            alert("You have to be logged in to use this feature");
+        }
     }
 
     render() {

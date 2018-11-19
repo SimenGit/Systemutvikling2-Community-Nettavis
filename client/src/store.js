@@ -74,16 +74,21 @@ class ServerLink {
     getLikes(article_id) {
         return axios.get(`/rating/likes/${article_id}`);
     }
+
     getDislikes(article_id) {
         return axios.get(`/rating/dislikes/${article_id}`);
+    }
+
+    postRating({rating, user_fk, article_fk}) {
+        return axios.post(`/rating/`, {rating, user_fk, article_fk});
+    }
+    checkUserRating({user_fk, article_fk}) {
+        return axios.get("checkUsers/check", {user_fk, article_fk});
     }
 
     patchArticle(oldHeader, {header, description, content, importance}) {
         return axios.patch(`/article/${oldHeader}`, {header, description, content, importance});
     }
-
-
-
 
 }
 

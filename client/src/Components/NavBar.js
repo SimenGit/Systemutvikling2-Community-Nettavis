@@ -13,14 +13,13 @@ class NavBar extends Component {
         password: '',
         passwordInput: '',
         output: '',
-        loggedInn: false
+        exists: null
     };
 
     onClickLogOut() {
         localStorage.removeItem("userEmail");
         this.setState({output: ' '});
         alert("Du er nå logget ut.");
-        this.setState({loggedInn: false});
     }
 
     onClick() {
@@ -29,15 +28,15 @@ class NavBar extends Component {
 
             this.setState({password: data[0].password});
 
-            if(this.state.password === this.state.passwordInput) {
+            if (this.state.password === this.state.passwordInput) {
                 this.setState({output: this.state.username});
                 localStorage.setItem("userEmail", this.state.username);
                 console.log("logget inn!");
                 this.setState({loggedInn: true});
-            }else{
-                console.log("brukernavn eller passord missmatch.");
+            } else {
                 alert("username or password missmatch.");
             }
+
 
         });
     }

@@ -39,5 +39,11 @@ router.post('/', (req,res) => {
     });
 });
 
+router.get("/checkUsers/check", (req,res) => {
+    ratingDao.checkUser(req.body, (status, data) => {
+        res.status(status).json(data);
+    });
+});
+
 
 module.exports = router;

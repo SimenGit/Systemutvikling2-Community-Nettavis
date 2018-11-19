@@ -91,7 +91,7 @@ class PostArticle extends Component {
             <div className="createArticleForm">
                 <div className="createArticleTop">
                     <h1>Post an article</h1>
-                    <button className="createArticleReturnBTN" onClick={this.onClickReturn}>Return to HomePage</button>
+                    <Button className="createArticleReturnBTN" onClick={this.onClickReturn}>Return to HomePage</Button>
                 </div>
                 <Form className="articleCreateForm">
                     <FormGroup>

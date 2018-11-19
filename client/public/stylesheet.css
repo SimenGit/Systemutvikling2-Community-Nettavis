@@ -2,7 +2,7 @@
 .frontPageArticles {
     background-color: white;
     padding-top: 25px;
-    padding-left: 75px;
+    padding-left: 100px;
 }
 .card-img-top {
     width: 100%;
@@ -149,8 +149,14 @@
     padding-left: 20px;
 }
 
+.registerUserPage {
+    padding-top: 150px;
+    padding-left: 75px;
+}
 
-
+.registerUserPageDetails {
+    padding-bottom: 35px;
+}
 
 .regEmail {
     display:block;
@@ -158,12 +164,7 @@
     position: relative;
     margin:10px 0;
 }
-.registerUserBTN {
-    display:block;
-    width: 280px;
-    position: relative;
-    margin:10px 0;
-}
+
 .regPassword {
     display:block;
     width: 280px;
@@ -290,13 +291,17 @@
 }
 
 .deleteArticlesWrapper {
-    padding-top: 200px;
+    padding-top: 100px;
     padding-right: 600px;
-    padding-left: 200px;
+    padding-left: 50px;
 }
 
 .updateArticleWrappper {
-    padding: 200px 600px 200px 200px;
+    padding: 100px 600px 200px 50px;
+}
+
+.inputTopSecond {
+    padding-bottom: 35px;
 }
 
 .inputValues {
@@ -321,19 +326,59 @@
 
 .articlesByCategory {
     padding-bottom: 100px;
-
 }
 
 .articlesByCategoryTop {
     padding-right: 400px;
-    padding-left: 175px;
+    padding-left: 100px;
     padding-top: 100px;
 }
 
 .catArticles {
     padding-right: 400px;
-    padding-top: 30px;
     padding-left: 100px;
+}
+.deleteSubmitBTN {
+    padding-top: 30px;
+}
+.deleteTop {
+    padding-bottom: 60px;
+}
+
+.updateSubmit{
+    padding-top: 30px;
+}
+
+.textTopCat {
+    padding-top: 30px;
+}
+
+.articleDetailsReturnField {
+    padding-bottom: 35px;
+}
+
+.categoryText {
+    size: 40px;
+}
+
+.likesImg{
+    height: 25px;
+    width: 25px;
+}
+.dislikesImg{
+    height: 25px;
+    width: 25px;
+}
+
+.likesBTN {
+    background-color: #71dd8a;
+}
+.dislikesBTN {
+    background-color: #e4606d;
+}
+
+.likesField {
+    padding-top: 35px;
 }
 
 

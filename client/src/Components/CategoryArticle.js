@@ -3,6 +3,7 @@ import { Component } from 'react-simplified';
 import {history} from "../index";
 import Category from "./Category";
 import {serverLink} from "../store";
+import {Button} from 'reactstrap';
 
 
 class CategoryArticle extends Component {
@@ -23,8 +24,11 @@ class CategoryArticle extends Component {
         return(
                 <div className = "articlesByCategory">
                 <div className = "articlesByCategoryTop">
-                <button className="createArticleReturnBTN" onClick={this.onClickReturn}>Return to HomePage</button>
-                <h1>{this.category}</h1>
+                    <Button className="createArticleReturnBTN" onClick={this.onClickReturn}>Return to HomePage</Button>
+                    <div className = "textTopCat">
+                        <h4>Articles with category</h4>
+                        <h1 className = "categoryText">{this.category}</h1>
+                    </div>
                 </div>
 
                 <div className="catArticles">

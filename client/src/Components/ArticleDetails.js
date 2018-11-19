@@ -8,6 +8,8 @@ import Comments from "./Comments";
 
 class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
 
+    email = localStorage.getItem("userEmail");
+
     id = null;
     header = null;
     description = null;
@@ -32,9 +34,34 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
         comments: {}
     };
 
+    getComments() {
+
+        serverLink.getCommentsByArticleID(this.id).then(data3 => {
+            this.setState({ comments: data3 });
+        });
+    }
+
+    getRating() {
+
+        serverLink.getLikes(this.article_fk).then(data4 => {
+            this.likes = data4[0].likes;
+        });
+        serverLink.getDislikes(this.article_fk).then(data5 => {
+            this.dislikes = data5[0].dislikes;
+        });
+
+    }
+
+
     componentDidMount() {
 
         this.article_fk = this.props.match.params.id;
+
+        this.getRating();
+        this.getComments();
+
+        setInterval(this.getComments, 2000);
+        setInterval(this.getRating, 5000);
 
         serverLink.getArticleById(this.props.match.params.id).then(data => {
             this.header = data[0].header;
@@ -49,17 +76,6 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
             serverLink.getUserByID(this.user_fk).then(data2 => {
                 this.userPosted = data2[0].name;
             });
-            serverLink.getCommentsByArticleID(this.id).then(data3 => {
-                this.setState({ comments: data3 });
-            });
-
-            serverLink.getLikes(this.article_fk).then(data4 => {
-                this.likes = data4[0].likes;
-            });
-            serverLink.getDislikes(this.article_fk).then(data5 => {
-                this.dislikes = data5[0].dislikes;
-            });
-
         });
 
     }
@@ -68,18 +84,82 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
         history.push("/");
     }
 
+    onClickLike() {
+
+        let id = null;
+        if(this.email !== null) {
+            serverLink.getUserByEmail(this.email).then(data => {
+                id = data[0].id;
+
+                const formData = new FormData();
+                formData.append('user_fk', id);
+                formData.append('article_fk', this.article_fk);
+
+                serverLink.checkUserRating(formData).then(data2 => {
+                    console.log(data2[0]);
+                    if (data2[0].id === null || data[0].id === undefined) {
+                        serverLink.postRating({
+                            rating: 1,
+                            user_fk: id,
+                            article_fk: this.article_fk
+                        });
+                    }else{
+                        alert("you already rated this article.");
+                    }
+                })
+            });
+
+        } else {
+            alert("You have to log in to rate an article");
+        }
+
+    }
+
+    onClickDislike() {
+
+        let id = null;
+        if(this.email !== null) {
+            serverLink.getUserByEmail(this.email).then(data => {
+                id = data[0].id;
+
+                const formData = new FormData();
+                formData.append('user_fk', id);
+                formData.append('article_fk', this.article_fk);
+
+                serverLink.checkUserRating(formData).then(data2 => {
+                    console.log(data2[0]);
+                    if (data2[0].id === null || data[0].id === undefined) {
+                        serverLink.postRating({
+                            rating: 0,
+                            user_fk: id,
+                            article_fk: this.article_fk
+                        });
+                    }else{
+                        alert("you already rated this article.");
+                    }
+                })
+            });
+
+        } else {
+            alert("You have to log in to rate an article");
+        }
+
+    }
+
     submitComment() {
 
         let email = localStorage.getItem("userEmail");
+
         if(email !== null){
             serverLink.getUserByEmail(email).then(data => {
+
                 serverLink.postComment({
                     comment: this.comment,
                     user_fk_comment: data[0].id,
                     article_fk: this.article_fk
                 });
             });
-            alert("Comment posted successfully, refresh page.");
+            alert("Comment posted successfully.");
         }else{
             alert("You have to log in to post comments");
         }
@@ -93,7 +173,7 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
             <div className="articleDetailsWrapper">
 
                 <div className = "articleDetailsReturnField">
-                    <Button className = "articleDetailsReturnBTN" onClick = {this.onClickReturn}>Return to HomePage</Button>
+                    <Button className = "createArticleReturnBTN" onClick = {this.onClickReturn}>Return to HomePage</Button>
                 </div>
 
                 <Form className="articleCreateForm">
@@ -123,9 +203,13 @@ class ArticleDetails extends Component<{ match: {params: { id : number } } }> {
 
                     <div className = "rating-felt">
                         <FormGroup>
-                            <p>{"Likes: " + this.likes}</p>
-                            <p>{"Dislikes: " + this.dislikes}</p>
+                            <div className="likesField">
+                                <img className="likesImg" src="logos/like.png"/>
+                                <Button className="likesBTN" onClick = {this.onClickLike}> {this.likes}</Button>
 
+                                <img className="dislikesImg" src="logos/dislike.png"/>
+                                <Button className="dislikesBTN" onClick = {this.onClickDislike}> {this.dislikes}</Button>
+                            </div>
                         </FormGroup>
                     </div>
 

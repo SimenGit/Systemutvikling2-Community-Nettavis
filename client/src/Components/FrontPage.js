@@ -17,15 +17,11 @@ class FrontPage extends Component {
     };
 
 
-    /*
-    updateNews() {
-        this.state.newsfeed.length > 0 &&
-        this.state.newsfeed.map(newsfeed => {
-            return <NewsFeed newsfeed={newsfeed}/>;
+    getNews() {
+        serverLink.getArticlesNewsFeed().then(data => {
+            this.setState({ newsfeed: data });
         });
     }
-    */
-
 
     render() {
         return (
@@ -54,16 +50,13 @@ class FrontPage extends Component {
 
     componentDidMount() {
 
-        //setInterval(this.updateNews, 60000);
-
+        setInterval(this.getNews, 30000);
+        this.getNews();
         serverLink.getArticlesImportant().then(data => {
             this.setState({ articles: data });
         });
-
-        serverLink.getArticlesNewsFeed().then(data => {
-            this.setState({ newsfeed: data });
-        });
     }
+
 }
 
 export default FrontPage;

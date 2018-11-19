@@ -35,10 +35,16 @@ module.exports = class RatingDao extends Dao {
         );
     }
 
-
-
-
-
+    checkUser(json, callback) {
+        const val = [
+            json.user_fk,
+            json.article_fk
+        ];
+        super.query("select * from rating where user_fk = ? and article_fk = ?",
+            val,
+            callback
+        );
+    }
 
 
 
