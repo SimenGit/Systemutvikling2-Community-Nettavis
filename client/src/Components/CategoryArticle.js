@@ -5,17 +5,15 @@ import { Component } from 'react-simplified';
 import { history } from '../index';
 import Category from './Category';
 import { articleStore } from '../store';
+//$FlowFixMe
 import { Button } from 'reactstrap';
 
 class CategoryArticle extends Component {
-  category = null;
 
-  state = {
-    categories: {}
-  };
+  category = null;
+  categories = {};
 
   onClickReturn() {
-    localStorage.removeItem('category');
     history.push('/');
   }
 
@@ -33,8 +31,8 @@ class CategoryArticle extends Component {
         </div>
 
         <div className="catArticles">
-          {this.state.categories.length > 0 &&
-            this.state.categories.map(categories => {
+          {this.categories.length > 0 &&
+            this.categories.map(categories => {
               return <Category categories={categories} />;
             })}
         </div>
@@ -43,9 +41,10 @@ class CategoryArticle extends Component {
   }
 
   componentDidMount() {
-    this.category = localStorage.getItem('category');
+    // $FlowFixMe
+    this.category = this.props.match.params.category;
     articleStore.getArticleByCategory(this.category).then(data => {
-      this.setState({ categories: data });
+      this.categories = data;
     });
   }
 }

@@ -4,32 +4,28 @@ import React from 'react';
 import { Component } from 'react-simplified';
 import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import { history } from '../index';
+// $FlowFixMe
 import { Button, Input } from 'reactstrap';
 
 class NavBar extends Component {
-  state = {
-    username: '',
-    password: '',
-    passwordInput: '',
-    output: '',
-    exists: null
-  };
+  username: string = '';
+  passwordInput: string = '';
+  output: string = '';
 
   onClickLogOut() {
-    localStorage.removeItem('userEmail');
-    this.setState({ output: ' ' });
-    alert('Du er nå logget ut.');
+    this.output = ' ';
+    userStore.logout();
+    localStorage.removeItem("userEmail");
+    alert('You are now logged out');
   }
 
   onClick() {
-    userStore.getUserByEmail(this.state.username).then(data => {
-      this.setState({ password: data[0].password });
-
-      if (this.state.password === this.state.passwordInput) {
-        this.setState({ output: this.state.username });
-        localStorage.setItem('userEmail', this.state.username);
-        console.log('logget inn!');
-        this.setState({ loggedInn: true });
+    userStore.getUserByEmail(this.username).then(() => {
+      const { currentUser } = userStore;
+      if (currentUser.password === this.passwordInput) {
+        localStorage.setItem("userEmail", currentUser.email);
+        this.output = currentUser.email;
+        alert('logged in successfully');
       } else {
         alert('username or password missmatch.');
       }
@@ -52,7 +48,7 @@ class NavBar extends Component {
                   className="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
-                  onChange={event => (this.state.username = event.target.value)}
+                  onChange={event => (this.username = event.target.value)}
                 />
               </div>
               <div className="col-sm">
@@ -60,7 +56,7 @@ class NavBar extends Component {
                   type="password"
                   className="form-control"
                   placeholder="Password"
-                  onChange={event => (this.state.passwordInput = event.target.value)}
+                  onChange={event => (this.passwordInput = event.target.value)}
                 />
               </div>
 
@@ -77,7 +73,7 @@ class NavBar extends Component {
               </div>
 
               <div className="col-sm-4">
-                <a className="form-control">Logged in as: {this.state.output}</a>
+                <a className="form-control">Logged in as: {this.output}</a>
               </div>
             </div>
           </div>

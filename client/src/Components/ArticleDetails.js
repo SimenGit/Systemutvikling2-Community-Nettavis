@@ -21,21 +21,6 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   dislikes: number = 0;
   comments = {};
 
-  getComments() {
-    commentStore.getCommentsByArticleID(this.id).then(data => {
-      this.comments = data;
-    });
-  }
-
-  getRating() {
-    ratingStore.getLikes(this.article_fk).then(data4 => {
-      this.likes = data4[0].likes;
-    });
-    ratingStore.getDislikes(this.article_fk).then(data5 => {
-      this.dislikes = data5[0].dislikes;
-    });
-  }
-
   componentDidMount() {
     this.id = this.props.match.params.id;
     this.email = localStorage.getItem('userEmail') || '';
@@ -49,6 +34,21 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
       userStore.getUserByID(user_fk).then(data => {
         this.userPosted = data[0].name;
       });
+    });
+  }
+
+  getComments() {
+    commentStore.getCommentsByArticleID(this.id).then(data => {
+      this.comments = data;
+    });
+  }
+
+  getRating() {
+    ratingStore.getLikes(this.article_fk).then(data4 => {
+      this.likes = data4[0].likes;
+    });
+    ratingStore.getDislikes(this.article_fk).then(data5 => {
+      this.dislikes = data5[0].dislikes;
     });
   }
 

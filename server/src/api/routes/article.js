@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-var mysql = require('mysql');
+let mysql = require('mysql');
 const multer = require('multer');
 const ArticleDao = require('../dao/articleDao');
 

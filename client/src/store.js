@@ -85,10 +85,16 @@ class UserStore{
         return axios.get(`/users/id/${id}`);
     }
     getUserByEmail(email: string) {
+        return axios.get(`/users/${email}`).then((users: User[]) => (this.currentUser = users[0]));
+    }
+    getUserByEmail2(email: string) {
         return axios.get(`/users/${email}`);
     }
     registerUser(p:{ email: string, password: string, name: string, age: number }) {
         return axios.post(`/users/`, { email: p.email, password: p.password, name: p.name, age: p.age });
+    }
+    logout() {
+        this.currentUser = new User();
     }
 
 }

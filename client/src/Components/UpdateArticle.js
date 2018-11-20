@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
+// $FlowFixMe!
 import { Input, Label, Button, FormGroup, Form } from 'reactstrap';
-import { commentStore, ratingStore, articleStore, userStore } from '../store';
+import { articleStore } from '../store';
 import { history } from '../index';
 
 class UpdateArticle extends Component {

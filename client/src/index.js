@@ -33,7 +33,7 @@ if (root)
         <Route exact path="/postArticle" component={PostArticle} />
         <Route exact path="/deleteArticle" component={DeleteArticle} />
         <Route exact path="/updateArticle" component={UpdateArticle} />
-        <Route exact path="/categoryArticle" component={CategoryArticle} />
+        <Route exact path="/categoryArticle/:category" component={CategoryArticle} />
       </div>
     </HashRouter>,
     root

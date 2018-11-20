@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
+//$FlowFixMe
 import { Input, Label, Button } from 'reactstrap';
 import { commentStore, ratingStore, articleStore } from '../store';
 import { history } from '../index';
 
 class DeleteArticle extends Component {
-  header = null;
+  header: string = '';
 
   onClickSubmit() {
     articleStore.getByHeader(this.header).then(data => {
@@ -15,11 +16,11 @@ class DeleteArticle extends Component {
       if (check !== undefined || check !== null) {
         commentStore.deleteComments(data[0].id);
         ratingStore.deleteRating(data[0].id);
+        articleStore.deleteArticle(this.header);
         alert('Deleted successfully');
       } else {
         alert('Could not find any article with that header');
       }
-      articleStore.deleteArticle(this.header);
     });
   }
 

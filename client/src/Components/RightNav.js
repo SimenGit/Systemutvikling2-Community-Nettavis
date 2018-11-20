@@ -6,11 +6,11 @@ import { history } from '../index';
 import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class RightNav extends Component {
-  dropdownOpen = false;
-  category = null;
+  dropdownOpen: boolean = false;
+  category: string = '';
 
   onClickPost() {
-    var userEmail = localStorage.getItem('userEmail');
+    let userEmail = localStorage.getItem("userEmail");
     if (userEmail !== null) {
       history.push('/postArticle');
     } else {
@@ -22,34 +22,12 @@ class RightNav extends Component {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  onClickFood() {
-    let category = 'food';
-    localStorage.setItem('category', category);
-    history.push('/categoryArticle');
-  }
-  onClickMotor() {
-    let category = 'motor';
-    localStorage.setItem('category', category);
-    history.push('/categoryArticle');
-  }
-  onClickNews() {
-    let category = 'news';
-    localStorage.setItem('category', category);
-    history.push('/categoryArticle');
-  }
-  onClickSports() {
-    let category = 'sport';
-    localStorage.setItem('category', category);
-    history.push('/categoryArticle');
-  }
-  onClickNature() {
-    let category = 'nature';
-    localStorage.setItem('category', category);
-    history.push('/categoryArticle');
+  onClickCategory(category: string) {
+    history.push('/categoryArticle/' + category);
   }
 
   onClickDelete() {
-    var userEmail = localStorage.getItem('userEmail');
+    let userEmail = localStorage.getItem("userEmail");
     if (userEmail !== null) {
       history.push('/deleteArticle');
     } else {
@@ -62,8 +40,8 @@ class RightNav extends Component {
   }
 
   onClickUpdate() {
-    var userEmail = localStorage.getItem('userEmail');
-    if (userEmail !== null) {
+      let userEmail = localStorage.getItem("userEmail");
+      if (userEmail !== null) {
       history.push('/updateArticle');
     } else {
       alert('You have to be logged in to use this feature');
@@ -98,11 +76,11 @@ class RightNav extends Component {
                 Categories
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={this.onClickFood}>Food</DropdownItem>
-                <DropdownItem onClick={this.onClickMotor}>Motor</DropdownItem>
-                <DropdownItem onClick={this.onClickNature}>Nature</DropdownItem>
-                <DropdownItem onClick={this.onClickNews}>News</DropdownItem>
-                <DropdownItem onClick={this.onClickSports}>Sports</DropdownItem>
+                <DropdownItem onClick={() =>this.onClickCategory("food")}>Food</DropdownItem>
+                <DropdownItem onClick={() =>this.onClickCategory("motor")}>Motor</DropdownItem>
+                <DropdownItem onClick={() =>this.onClickCategory("nature")}>Nature</DropdownItem>
+                <DropdownItem onClick={() =>this.onClickCategory("news")}>News</DropdownItem>
+                <DropdownItem onClick={() =>this.onClickCategory("sports")}>Sports</DropdownItem>
               </DropdownMenu>
             </ButtonDropdown>
           </div>

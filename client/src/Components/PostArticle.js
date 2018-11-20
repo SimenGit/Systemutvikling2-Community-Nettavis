@@ -4,9 +4,11 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import { history } from '../index';
+//$FlowFixMe!
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class PostArticle extends Component {
+
   header = null;
   description = null;
   content = null;
@@ -23,7 +25,8 @@ class PostArticle extends Component {
   }
 
   onClick() {
-    console.log(this.category_fk);
+      console.log(this.user_fk);
+
     if (
       this.header !== null &&
       this.content !== null &&
@@ -79,8 +82,10 @@ class PostArticle extends Component {
 
   componentDidMount() {
     this.user_email = localStorage.getItem('userEmail');
+    const {currentUser} = userStore;
+    this.user_fk = currentUser.id;
 
-    userStore.getUserByEmail(this.user_email).then(data => {
+    userStore.getUserByEmail2(this.user_email).then(data => {
       this.user_fk = data[0].id;
     });
   }
@@ -121,7 +126,7 @@ class PostArticle extends Component {
                 <Input
                   type="radio"
                   name="radio1"
-                  id="opt1"
+                  id="opt2"
                   onChange={event => {
                     if (event.target.value !== undefined) {
                       this.category_fk = 'food';
@@ -213,7 +218,7 @@ class PostArticle extends Component {
               <Label check>
                 <Input
                   type="radio"
-                  name="radio1"
+                  name="radio3"
                   id="opt1"
                   onChange={event => {
                     if (event.target.value !== undefined) {
@@ -228,8 +233,8 @@ class PostArticle extends Component {
               <Label check>
                 <Input
                   type="radio"
-                  name="radio1"
-                  id="opt2"
+                  name="radio3"
+                  id="opt1"
                   onChange={event => {
                     if (event.target.value !== undefined) {
                       this.importance = 0;
