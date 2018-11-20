@@ -10,7 +10,6 @@ import Comments from './Comments';
 import { formDate } from '../widgets';
 
 class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
-  
   email: string = '';
   id: number = 0;
   userPosted: string = '';
@@ -20,21 +19,21 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   user_fk_comment: string = '';
   likes: number = 0;
   dislikes: number = 0;
-  comments= {};
+  comments = {};
 
   getComments() {
-      commentStore.getCommentsByArticleID(this.id).then(data => {
-          this.comments = data;
-      });
+    commentStore.getCommentsByArticleID(this.id).then(data => {
+      this.comments = data;
+    });
   }
 
   getRating() {
-      ratingStore.getLikes(this.article_fk).then(data4 => {
-          this.likes = data4[0].likes;
-      });
-      ratingStore.getDislikes(this.article_fk).then(data5 => {
-          this.dislikes = data5[0].dislikes;
-      });
+    ratingStore.getLikes(this.article_fk).then(data4 => {
+      this.likes = data4[0].likes;
+    });
+    ratingStore.getDislikes(this.article_fk).then(data5 => {
+      this.dislikes = data5[0].dislikes;
+    });
   }
 
   componentDidMount() {
@@ -144,9 +143,9 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
               <h2 className="kommentarerText">Kommentarer:</h2>
             </FormGroup>
             <FormGroup className="commentList">
-                {this.comments.length > 0 &&
+              {this.comments.length > 0 &&
                 this.comments.map(comments => {
-                    return <Comments comments={comments} />;
+                  return <Comments comments={comments} />;
                 })}
             </FormGroup>
 

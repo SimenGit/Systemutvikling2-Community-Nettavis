@@ -16,8 +16,6 @@ class Article {
   importance: boolean = false;
   category_fk: number = 0;
   user_fk: number = 0;
-  //likes: number = 0;
-  //dislikes: number = 0;
 }
 
 class User {
@@ -26,20 +24,6 @@ class User {
   age: number = 0;
   email: string = '';
   password: string = '';
-}
-
-class Comment {
-  id: number = 0;
-  comment: string = '';
-  user_fk_comment: number = 0;
-  article_fk: number = 0;
-}
-
-class Rating {
-  id: number = 0;
-  rating: boolean = false;
-  article_fk: number = 0;
-  user_fk: number = 0;
 }
 
 class ArticleStore {
@@ -51,8 +35,8 @@ class ArticleStore {
         return axios.get('/article');
     }
 
-    patchArticle(oldHeader:string, newvalue: { header: string, description: string, content: string, importance: boolean }) {
-        return axios.patch(`/article/${oldHeader}`, { header, description, content, importance });
+    patchArticle(oldHeader:string, p: { header: string, description: string, content: string, importance: boolean }) {
+        return axios.patch(`/article/${oldHeader}`, { header: p.header, description: p.description, content: p.content, importance: p.importance });
     }
 
     getByHeader(header: string) {
@@ -65,12 +49,14 @@ class ArticleStore {
 
     getArticleById(id: number) {
         return axios.get(`/article/id/${id}`).then((articles: Article)=> {
+            // $FlowFixMe
             this.currentArticle = articles[0];
+            // $FlowFixMe
             return articles[0].user_fk;
         });
     }
 
-    // Flow Fix Me
+    // $FlowFixMe
     postArticle(formData, config) {
         return axios.post(`/article/`, formData, config);
     }
@@ -102,13 +88,12 @@ class UserStore{
         return axios.get(`/users/${email}`);
     }
     registerUser(p:{ email: string, password: string, name: string, age: number }) {
-        return axios.post(`/users/`, { email, password, name, age });
+        return axios.post(`/users/`, { email: p.email, password: p.password, name: p.name, age: p.age });
     }
 
 }
 
 class CommentStore {
-  comments: Comment[] = [];
 
     getComments(id: number) {
         return axios.get(`/comments/${id}`);
@@ -128,8 +113,6 @@ class CommentStore {
 }
 
 class RatingStore {
-    currentRating: Rating = new Rating();
-    ratings: Rating[] = [];
 
     getLikes(article_id: number) {
         return axios.get(`/rating/likes/${article_id}`);
@@ -158,7 +141,6 @@ class RatingStore {
     getDislikes(article_id: number) {
         return axios.get(`/rating/dislikes/${article_id}`);
     }
-
 }
 
 export const articleStore = sharedComponentData(new ArticleStore());
