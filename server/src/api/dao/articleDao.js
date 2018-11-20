@@ -7,7 +7,7 @@ module.exports = class ArticleDao extends Dao {
     super.query('select * from article', [], callback);
   }
 
-  getOne(id, callback) {
+  getOne(id: number, callback) {
     super.query('select * from article where id=?', [id], callback);
   }
 
@@ -37,15 +37,15 @@ module.exports = class ArticleDao extends Dao {
     );
   }
 
-  deleteOne(header, callback) {
+  deleteOne(header: string, callback) {
     super.query('delete from article where header = ?', [header], callback);
   }
 
-  getByHeader(header, callback) {
+  getByHeader(header: string, callback) {
     super.query('select * from article where header = ?', [header], callback);
   }
 
-  patchOne(artHeader, json, callback) {
+  patchOne(artHeader: string, json, callback) {
     const val = [json.header, json.description, json.content, json.importance, artHeader];
 
     super.query(
@@ -55,7 +55,7 @@ module.exports = class ArticleDao extends Dao {
     );
   }
 
-  getArticleByCategory(category, callback) {
+  getArticleByCategory(category: string, callback) {
     super.query('select * from article where category_fk = ?', [category], callback);
   }
 };

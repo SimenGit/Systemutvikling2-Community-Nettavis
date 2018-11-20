@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react-simplified';
 import { history } from '../index';
 import { Button } from 'reactstrap';
-import {formDate} from "../widgets";
+import { formDate } from '../widgets';
 
 class Article extends Component {
   render() {

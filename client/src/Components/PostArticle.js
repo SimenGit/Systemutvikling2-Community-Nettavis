@@ -8,7 +8,6 @@ import { history } from '../index';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class PostArticle extends Component {
-
   header = null;
   description = null;
   content = null;
@@ -25,7 +24,7 @@ class PostArticle extends Component {
   }
 
   onClick() {
-      console.log(this.user_fk);
+    console.log(this.user_fk);
 
     if (
       this.header !== null &&
@@ -82,7 +81,7 @@ class PostArticle extends Component {
 
   componentDidMount() {
     this.user_email = localStorage.getItem('userEmail');
-    const {currentUser} = userStore;
+    const { currentUser } = userStore;
     this.user_fk = currentUser.id;
 
     userStore.getUserByEmail2(this.user_email).then(data => {
@@ -204,7 +203,7 @@ class PostArticle extends Component {
               type="textarea"
               name="text"
               id="exampleText"
-              style={{height:300}}
+              style={{ height: 300 }}
               onChange={event => (this.content = event.target.value)}
             />
           </FormGroup>

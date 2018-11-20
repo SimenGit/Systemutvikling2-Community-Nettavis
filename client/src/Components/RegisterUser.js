@@ -7,13 +7,13 @@ import { history } from '../index';
 import { Input, Button } from 'reactstrap';
 
 class RegisterUser extends Component {
-  name = null;
-  age = null;
-  email = null;
-  password = null;
+  name: string = '';
+  age: number = 0;
+  email: string = '';
+  password: string = '';
 
   onClick() {
-    if (this.email !== null && this.password !== null && this.name !== null) {
+    if (this.email !== '' && this.password !== '' && this.name !== '' && this.age !== 0) {
       userStore.registerUser({
         email: this.email,
         password: this.password,

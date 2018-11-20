@@ -12,7 +12,7 @@ module.exports = class CommentDao extends Dao {
     super.query('insert into comments (comment,user_fk_comment,article_fk) values (?,?,?)', val, callback);
   }
 
-  deleteOne(article_fk, callback) {
+  deleteOne(article_fk: number, callback) {
     super.query('delete from comments where article_fk = ?', [article_fk], callback);
   }
 };

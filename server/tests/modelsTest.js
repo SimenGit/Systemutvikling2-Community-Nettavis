@@ -3,21 +3,22 @@
 var mysql = require("mysql");
 //$FlowFixMe!
 const userDao = require("./api/dao/userDao.js");
+
 //$FlowFixMe!
 const runsqlfile = require("/runsqlfile.js");
 
 
 var pool = mysql.createPool({
     connectionLimit: 1,
-    host: 'mysql.stud.iie.ntnu.no',
-    user: 'simenten',
-    password: 'TOFcRtVk',
-    database: 'simenten',
+    host: "mysql",
+    user: "root",
+    password: "secret",
+    database: "supertestdb",
     debug: false,
     multipleStatements: true
 });
 
-let personDao = new PersonDao(pool);
+let userDao = new userDao(pool);
 
 beforeAll(done => {
     runsqlfile("dao/create_tables.sql", pool, () => {

@@ -10,7 +10,7 @@ class RightNav extends Component {
   category: string = '';
 
   onClickPost() {
-    let userEmail = localStorage.getItem("userEmail");
+    let userEmail = localStorage.getItem('userEmail');
     if (userEmail !== null) {
       history.push('/postArticle');
     } else {
@@ -27,7 +27,7 @@ class RightNav extends Component {
   }
 
   onClickDelete() {
-    let userEmail = localStorage.getItem("userEmail");
+    let userEmail = localStorage.getItem('userEmail');
     if (userEmail !== null) {
       history.push('/deleteArticle');
     } else {
@@ -40,8 +40,8 @@ class RightNav extends Component {
   }
 
   onClickUpdate() {
-      let userEmail = localStorage.getItem("userEmail");
-      if (userEmail !== null) {
+    let userEmail = localStorage.getItem('userEmail');
+    if (userEmail !== null) {
       history.push('/updateArticle');
     } else {
       alert('You have to be logged in to use this feature');
@@ -76,11 +76,11 @@ class RightNav extends Component {
                 Categories
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={() =>this.onClickCategory("food")}>Food</DropdownItem>
-                <DropdownItem onClick={() =>this.onClickCategory("motor")}>Motor</DropdownItem>
-                <DropdownItem onClick={() =>this.onClickCategory("nature")}>Nature</DropdownItem>
-                <DropdownItem onClick={() =>this.onClickCategory("news")}>News</DropdownItem>
-                <DropdownItem onClick={() =>this.onClickCategory("sports")}>Sports</DropdownItem>
+                <DropdownItem onClick={() => this.onClickCategory('food')}>Food</DropdownItem>
+                <DropdownItem onClick={() => this.onClickCategory('motor')}>Motor</DropdownItem>
+                <DropdownItem onClick={() => this.onClickCategory('nature')}>Nature</DropdownItem>
+                <DropdownItem onClick={() => this.onClickCategory('news')}>News</DropdownItem>
+                <DropdownItem onClick={() => this.onClickCategory('sports')}>Sports</DropdownItem>
               </DropdownMenu>
             </ButtonDropdown>
           </div>

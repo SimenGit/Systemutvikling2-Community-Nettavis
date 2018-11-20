@@ -6,9 +6,8 @@ import React from 'react';
 import { articleStore } from '../store';
 
 class FrontPage extends Component {
-
   render() {
-    const {articles} = articleStore;
+    const { articles } = articleStore;
     return (
       <div className="frontPage">
         <div className="newsfeedtext">

@@ -4,11 +4,10 @@ import React from 'react';
 import { Component } from 'react-simplified';
 import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import NewsFeed from './NewsFeed';
-//$Flow Fix Me
+//$FlowFixMe!
 import { Container, Row } from 'reactstrap';
 
 class NewsFeedFixed extends Component {
-
   getNews() {
     articleStore.getArticlesNewsFeed();
   }
@@ -19,14 +18,14 @@ class NewsFeedFixed extends Component {
   }
 
   render() {
-    const {newsfeed} = articleStore;
+    const { newsfeed } = articleStore;
     return (
       <div className="frontPageNewsFeedVertical">
         <Container className="containerNews">
           <Row>
             {newsfeed.length > 0 &&
               newsfeed.map(newsfeed => {
-                return <NewsFeed key = {newsfeed.id} newsfeed={newsfeed} />;
+                return <NewsFeed key={newsfeed.id} newsfeed={newsfeed} />;
               })}
           </Row>
         </Container>

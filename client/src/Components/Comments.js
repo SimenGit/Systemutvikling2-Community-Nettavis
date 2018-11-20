@@ -6,7 +6,7 @@ import { Component } from 'react-simplified';
 import { Alert } from 'reactstrap';
 import { userStore } from '../store';
 
-class Comments extends Component< {comments: {user_fk_comment: number, comment: string} }> {
+class Comments extends Component<{ comments: { user_fk_comment: number, comment: string } }> {
   commentUser = '';
 
   componentDidMount() {

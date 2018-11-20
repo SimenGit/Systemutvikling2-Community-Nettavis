@@ -9,7 +9,6 @@ import { articleStore } from '../store';
 import { Button } from 'reactstrap';
 
 class CategoryArticle extends Component {
-
   category = null;
   categories = {};
 

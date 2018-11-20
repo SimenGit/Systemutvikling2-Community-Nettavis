@@ -15,7 +15,7 @@ class NavBar extends Component {
   onClickLogOut() {
     this.output = ' ';
     userStore.logout();
-    localStorage.removeItem("userEmail");
+    localStorage.removeItem('userEmail');
     alert('You are now logged out');
   }
 
@@ -23,7 +23,7 @@ class NavBar extends Component {
     userStore.getUserByEmail(this.username).then(() => {
       const { currentUser } = userStore;
       if (currentUser.password === this.passwordInput) {
-        localStorage.setItem("userEmail", currentUser.email);
+        localStorage.setItem('userEmail', currentUser.email);
         this.output = currentUser.email;
         alert('logged in successfully');
       } else {
