@@ -59,7 +59,7 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   onClickRating(like: boolean) {
     let user_fk = null;
     if (this.email !== null) {
-      userStore.getUserByEmail(this.email).then(data => {
+      userStore.getUserByEmail2(this.email).then(data => {
         user_fk = data[0].id;
         ratingStore.postRating({
           rating: like,
@@ -75,7 +75,7 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   submitComment() {
     let email: string = localStorage.getItem('userEmail') || '';
     if (email !== '') {
-      userStore.getUserByEmail(email).then(data => {
+      userStore.getUserByEmail2(email).then(data => {
         commentStore.postComment({
           comment: this.comment,
           user_fk_comment: data[0].id,
