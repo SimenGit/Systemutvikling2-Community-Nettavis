@@ -56,6 +56,6 @@ module.exports = class ArticleDao extends Dao {
   }
 
   getArticleByCategory(category: string, callback) {
-    super.query('select * from article where category_fk = ?', [category], callback);
+    super.query('select * from article where category_fk = ? order by date_made desc', [category], callback);
   }
 };
