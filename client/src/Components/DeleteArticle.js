@@ -3,23 +3,23 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Input, Label, Button } from 'reactstrap';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore } from '../store';
 import { history } from '../index';
 
 class DeleteArticle extends Component {
   header = null;
 
   onClickSubmit() {
-    serverLink.getByHeader(this.header).then(data => {
+    articleStore.getByHeader(this.header).then(data => {
       let check = data[0].id;
       if (check !== undefined || check !== null) {
-        serverLink.deleteComments(data[0].id);
-        serverLink.deleteRating(data[0].id);
+        commentStore.deleteComments(data[0].id);
+        ratingStore.deleteRating(data[0].id);
         alert('Deleted successfully');
       } else {
         alert('Could not find any article with that header');
       }
-      serverLink.deleteArticle(this.header);
+      articleStore.deleteArticle(this.header);
     });
   }
 

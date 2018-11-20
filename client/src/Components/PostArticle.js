@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import { history } from '../index';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -67,7 +67,7 @@ class PostArticle extends Component {
           'content-type': 'multipart/form-data'
         }
       };
-      serverLink.postArticle(formData, config);
+      articleStore.postArticle(formData, config);
       console.log('Inserted.');
 
       alert('Article posted.');
@@ -80,7 +80,7 @@ class PostArticle extends Component {
   componentDidMount() {
     this.user_email = localStorage.getItem('userEmail');
 
-    serverLink.getUserByEmail(this.user_email).then(data => {
+    userStore.getUserByEmail(this.user_email).then(data => {
       this.user_fk = data[0].id;
     });
   }

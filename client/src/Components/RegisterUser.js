@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Component } from 'react-simplified';
-import { serverLink } from '../store';
+import { userStore } from '../store';
 import { history } from '../index';
 import { Input, Button } from 'reactstrap';
 
@@ -14,7 +14,7 @@ class RegisterUser extends Component {
 
   onClick() {
     if (this.email !== null && this.password !== null && this.name !== null) {
-      serverLink.registerUser({
+      userStore.registerUser({
         email: this.email,
         password: this.password,
         name: this.name,

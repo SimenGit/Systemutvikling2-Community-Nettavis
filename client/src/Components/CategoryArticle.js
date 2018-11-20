@@ -4,7 +4,7 @@ import React from 'react';
 import { Component } from 'react-simplified';
 import { history } from '../index';
 import Category from './Category';
-import { serverLink } from '../store';
+import { articleStore } from '../store';
 import { Button } from 'reactstrap';
 
 class CategoryArticle extends Component {
@@ -44,7 +44,7 @@ class CategoryArticle extends Component {
 
   componentDidMount() {
     this.category = localStorage.getItem('category');
-    serverLink.getArticleByCategory(this.category).then(data => {
+    articleStore.getArticleByCategory(this.category).then(data => {
       this.setState({ categories: data });
     });
   }

@@ -23,7 +23,6 @@ class Article extends Component {
 
   onClick() {
     history.push('/articleDetails/' + this.props.article.id);
-    console.log(this.props.article.id);
   }
 }
 

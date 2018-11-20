@@ -2,19 +2,15 @@
 
 import React from 'react';
 import { Component } from 'react-simplified';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import NewsFeed from './NewsFeed';
+//$Flow Fix Me
 import { Container, Row } from 'reactstrap';
 
 class NewsFeedFixed extends Component {
-  state = {
-    newsfeed: {}
-  };
 
   getNews() {
-    serverLink.getArticlesNewsFeed().then(data => {
-      this.setState({ newsfeed: data });
-    });
+    articleStore.getArticlesNewsFeed();
   }
 
   componentDidMount() {
@@ -23,13 +19,14 @@ class NewsFeedFixed extends Component {
   }
 
   render() {
+    const {newsfeed} = articleStore;
     return (
       <div className="frontPageNewsFeedVertical">
         <Container className="containerNews">
           <Row>
-            {this.state.newsfeed.length > 0 &&
-              this.state.newsfeed.map(newsfeed => {
-                return <NewsFeed newsfeed={newsfeed} />;
+            {newsfeed.length > 0 &&
+              newsfeed.map(newsfeed => {
+                return <NewsFeed key = {newsfeed.id} newsfeed={newsfeed} />;
               })}
           </Row>
         </Container>

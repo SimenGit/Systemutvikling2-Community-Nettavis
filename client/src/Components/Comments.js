@@ -2,14 +2,15 @@
 
 import React from 'react';
 import { Component } from 'react-simplified';
+// $FlowFixMe
 import { Alert } from 'reactstrap';
-import { serverLink } from '../store';
+import { userStore } from '../store';
 
 class Comments extends Component {
-  commentUser = null;
+  commentUser = '';
 
   componentDidMount() {
-    serverLink.getUserByID(this.props.comments.user_fk_comment).then(data => {
+    userStore.getUserByID(this.props.comments.user_fk_comment).then(data => {
       this.commentUser = data[0].name;
     });
   }
@@ -18,7 +19,7 @@ class Comments extends Component {
     return (
       <div className="comment-list">
         <Alert color="secondary">
-          <p>{this.props.comments.comment}</p>
+          <p>{'' + this.props.comments.comment}</p>
           <hr />
           <p className="mb-0">{'- ' + this.commentUser}</p>
         </Alert>

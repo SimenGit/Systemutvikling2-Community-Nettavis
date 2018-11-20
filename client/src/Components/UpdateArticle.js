@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Input, Label, Button, FormGroup, Form } from 'reactstrap';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import { history } from '../index';
 
 class UpdateArticle extends Component {
@@ -44,7 +44,7 @@ class UpdateArticle extends Component {
       formData.append('content', this.newContent);
       formData.append('importance', this.newImportance);
 
-      serverLink.patchArticle(this.header, newValues);
+      articleStore.patchArticle(this.header, newValues);
       alert('updated.');
     } else {
       alert('Fill in all fields');

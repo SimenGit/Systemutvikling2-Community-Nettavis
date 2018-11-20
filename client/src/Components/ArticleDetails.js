@@ -2,71 +2,53 @@
 
 import { Component } from 'react-simplified';
 import React from 'react';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore, userStore } from '../store';
+// $FlowFixMe
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import { history } from '../index';
 import Comments from './Comments';
+import { formDate } from '../widgets';
 
 class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
-  email = localStorage.getItem('userEmail');
-  id = null;
-  header = null;
-  description = null;
-  content = null;
-  date_made = null;
-  img = null;
-  importance = null;
-  category_fk = null;
-  user_fk = null;
-  userPosted = null;
-  thisComment = null;
-  comment = null;
-  user_fk_comment = null;
-  article_fk = null;
-  likes = null;
-  dislikes = null;
-  ratingType = null;
-
-  state = {
-    comments: {}
-  };
+  
+  email: string = '';
+  id: number = 0;
+  userPosted: string = '';
+  thisComment: string = '';
+  comment: string = '';
+  article_fk: number = 0;
+  user_fk_comment: string = '';
+  likes: number = 0;
+  dislikes: number = 0;
+  comments= {};
 
   getComments() {
-    serverLink.getCommentsByArticleID(this.id).then(data3 => {
-      this.setState({ comments: data3 });
-    });
+      commentStore.getCommentsByArticleID(this.id).then(data => {
+          this.comments = data;
+      });
   }
 
   getRating() {
-    serverLink.getLikes(this.article_fk).then(data4 => {
-      this.likes = data4[0].likes;
-    });
-    serverLink.getDislikes(this.article_fk).then(data5 => {
-      this.dislikes = data5[0].dislikes;
-    });
+      ratingStore.getLikes(this.article_fk).then(data4 => {
+          this.likes = data4[0].likes;
+      });
+      ratingStore.getDislikes(this.article_fk).then(data5 => {
+          this.dislikes = data5[0].dislikes;
+      });
   }
 
   componentDidMount() {
+    this.id = this.props.match.params.id;
+    this.email = localStorage.getItem('userEmail') || '';
     this.article_fk = this.props.match.params.id;
-    console.log(this.article_fk);
     this.getRating();
     this.getComments();
+    setInterval(this.getComments, 5000);
+    setInterval(this.getRating, 5000);
 
-    setInterval(this.getComments, 10000);
-    setInterval(this.getRating, 10000);
-
-    serverLink.getArticleById(this.props.match.params.id).then(data => {
-      this.header = data[0].header;
-      this.description = data[0].description;
-      this.content = data[0].content;
-      this.date_made = data[0].date_made;
-      this.img = data[0].img;
-      this.importance = data[0].importance;
-      this.category_fk = data[0].category_fk;
-      this.user_fk = data[0].user_fk;
-      this.id = data[0].id;
-      serverLink.getUserByID(this.user_fk).then(data2 => {
-        this.userPosted = data2[0].name;
+    articleStore.getArticleById(this.props.match.params.id).then(user_fk => {
+      userStore.getUserByID(user_fk).then(data => {
+        this.userPosted = data[0].name;
       });
     });
   }
@@ -78,11 +60,9 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   onClickRating(like: boolean) {
     let user_fk = null;
     if (this.email !== null) {
-      serverLink.getUserByEmail(this.email).then(data => {
+      userStore.getUserByEmail(this.email).then(data => {
         user_fk = data[0].id;
-        console.log(user_fk);
-        console.log(this.article_fk);
-        serverLink.postRating({
+        ratingStore.postRating({
           rating: like,
           user_fk: user_fk,
           article_fk: this.article_fk
@@ -94,11 +74,10 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   }
 
   submitComment() {
-    let email = localStorage.getItem('userEmail');
-
-    if (email !== null) {
-      serverLink.getUserByEmail(email).then(data => {
-        serverLink.postComment({
+    let email: string = localStorage.getItem('userEmail') || '';
+    if (email !== '') {
+      userStore.getUserByEmail(email).then(data => {
+        commentStore.postComment({
           comment: this.comment,
           user_fk_comment: data[0].id,
           article_fk: this.article_fk
@@ -111,6 +90,7 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
   }
 
   render() {
+    const { currentArticle } = articleStore;
     return (
       <div className="articleDetailsWrapper">
         <div className="articleDetailsReturnField">
@@ -122,23 +102,23 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
         <Form className="articleCreateForm">
           <div className="detailsTopPart">
             <FormGroup>
-              <img className="imgDetails" src={'/images/' + this.img} />
+              <img className="imgDetails" src={'/images/' + currentArticle.img} />
             </FormGroup>
             <FormGroup>
               <strong className="postedBy">{'article posted by: ' + this.userPosted + '    '}</strong>
-              <i>{this.date_made}</i>
+              <i>{formDate(currentArticle.date_made)}</i>
             </FormGroup>
             <FormGroup className="detailsDescription">
-              <i>{'Bilde beskrivelse: ' + this.description}</i>
+              <i>{'Bilde beskrivelse: ' + currentArticle.description}</i>
             </FormGroup>
           </div>
           <FormGroup>
-            <h1 className="detailsHeader">{this.header}</h1>
+            <h1 className="detailsHeader">{currentArticle.header}</h1>
           </FormGroup>
 
           <div className="articleContent">
             <FormGroup>
-              <p>{this.content}</p>
+              <p>{currentArticle.content}</p>
             </FormGroup>
           </div>
 
@@ -148,12 +128,12 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
                 <img className="likesImg" src="logos/like.png" />
                 <Button onClick={() => this.onClickRating(true)} className="likesBTN">
                   {' '}
-                  {this.likes}
+                  {'' + this.likes}
                 </Button>
                 <img className="dislikesImg" src="logos/dislike.png" />
                 <Button onClick={() => this.onClickRating(false)} className="dislikesBTN">
                   {' '}
-                  {this.dislikes}
+                  {'' + this.dislikes}
                 </Button>
               </div>
             </FormGroup>
@@ -164,9 +144,9 @@ class ArticleDetails extends Component<{ match: { params: { id: number } } }> {
               <h2 className="kommentarerText">Kommentarer:</h2>
             </FormGroup>
             <FormGroup className="commentList">
-              {this.state.comments.length > 0 &&
-                this.state.comments.map(comments => {
-                  return <Comments comments={comments} />;
+                {this.comments.length > 0 &&
+                this.comments.map(comments => {
+                    return <Comments comments={comments} />;
                 })}
             </FormGroup>
 

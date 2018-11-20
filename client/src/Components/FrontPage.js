@@ -3,22 +3,12 @@
 import { Component } from 'react-simplified';
 import Article from './Article';
 import React from 'react';
-import { serverLink } from '../store';
+import { articleStore } from '../store';
 
 class FrontPage extends Component {
-  state = {
-    articles: {},
-    username: '',
-    newsfeed: {}
-  };
-
-  getNews() {
-    serverLink.getArticlesNewsFeed().then(data => {
-      this.setState({ newsfeed: data });
-    });
-  }
 
   render() {
+    const {articles} = articleStore;
     return (
       <div className="frontPage">
         <div className="newsfeedtext">
@@ -26,9 +16,9 @@ class FrontPage extends Component {
         </div>
 
         <div className="frontPageArticles">
-          {this.state.articles.length > 0 &&
-            this.state.articles.map(article => {
-              return <Article article={article} />;
+          {articles.length > 0 &&
+            articles.map(article => {
+              return <Article key={article.id} article={article} />;
             })}
         </div>
       </div>
@@ -36,9 +26,7 @@ class FrontPage extends Component {
   }
 
   componentDidMount() {
-    serverLink.getArticlesImportant().then(data => {
-      this.setState({ articles: data });
-    });
+    articleStore.getArticlesImportant();
   }
 }
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Component } from 'react-simplified';
-import { serverLink } from '../store';
+import { commentStore, ratingStore, articleStore, userStore } from '../store';
 import { history } from '../index';
 import { Button, Input } from 'reactstrap';
 
@@ -22,7 +22,7 @@ class NavBar extends Component {
   }
 
   onClick() {
-    serverLink.getUserByEmail(this.state.username).then(data => {
+    userStore.getUserByEmail(this.state.username).then(data => {
       this.setState({ password: data[0].password });
 
       if (this.state.password === this.state.passwordInput) {
