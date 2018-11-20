@@ -13,6 +13,6 @@ export const formDate = (dateI: Date) => {
     hoursfinal = '0' + hours;
   }
   return (
-    date.getDay() + '/' + (date.getMonth() + 1) + '-' + date.getFullYear() + '  ' + hoursfinal + ':' + minutesfinal
+    date.getDate() + '/' + (date.getMonth() + 1) + '-' + date.getFullYear() + '  ' + hoursfinal + ':' + minutesfinal
   );
 };

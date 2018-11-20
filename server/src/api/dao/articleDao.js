@@ -16,7 +16,7 @@ module.exports = class ArticleDao extends Dao {
   }
 
   getNewsFeed(callback) {
-    super.query('select * from article order by date_made desc limit 4', [], callback);
+    super.query('select * from article order by date_made desc limit 3', [], callback);
   }
 
   createOne(json, file, callback) {

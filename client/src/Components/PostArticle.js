@@ -204,6 +204,7 @@ class PostArticle extends Component {
               type="textarea"
               name="text"
               id="exampleText"
+              style={{height:300}}
               onChange={event => (this.content = event.target.value)}
             />
           </FormGroup>
