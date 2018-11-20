@@ -4,6 +4,7 @@ import React from 'react';
 import { Component } from 'react-simplified';
 import { history } from '../index';
 import { Button } from 'reactstrap';
+import {formDate} from "../widgets";
 
 class Category extends Component {
   onClick() {
@@ -17,7 +18,7 @@ class Category extends Component {
         <div className="card">
           <img className="card-img-top" src={'images/' + this.props.categories.img} />
           <div className="card-body">
-            <i className="card-Date">{this.props.categories.date_made}</i>
+            <i className="card-Date">{formDate(this.props.categories.date_made)}</i>
             <h5 className="card-title">{this.props.categories.header}</h5>
             <Button className="articleCardBTN" onClick={this.onClick}>
               Read more
